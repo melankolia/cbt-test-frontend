@@ -2,8 +2,9 @@ const Container = () => import("../container");
 const Home = () => import("../views/Home");
 const About = () => import("../views/About");
 const LandingPage = () => import("../views/LandingPage");
+const Login = () => import("../views/Login");
 
-import { HOME, ABOUT, LANDING_PAGE } from "./name.types";
+import { HOME, ABOUT, LANDING_PAGE, LOGIN } from "./name.types";
 
 export const configRoutes = [
   {
@@ -26,6 +27,11 @@ export const configRoutes = [
         component: About,
       },
     ],
+  },
+  {
+    path: "/login",
+    name: LOGIN,
+    component: Login,
   },
   {
     path: "/abouts",
