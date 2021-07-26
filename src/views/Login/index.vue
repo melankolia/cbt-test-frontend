@@ -91,12 +91,20 @@
               html-type="submit"
               :disabled="hasErrors(form.getFieldsError())"
             >
-              Log in
+              <span class="font-airbnb-medium tracking-wider">Login </span>
             </a-button>
-            <a-divider>
+            <a-divider style="margin: 0.2rem 0">
               <span class="font-airbnb-light text-xs">OR</span>
             </a-divider>
-            <a-button class="mt-2" size="large" block> Register </a-button>
+            <a-button
+              @click="handleRegister"
+              :loading="loadingRegister"
+              class="mt-4"
+              size="large"
+              block
+            >
+              <span class="font-airbnb-medium tracking-wider">Register </span>
+            </a-button>
           </a-form-item>
         </a-form>
       </a-card>
@@ -126,6 +134,7 @@ export default {
     return {
       hasErrors,
       form: this.$form.createForm(this, { name: "horizontal_login" }),
+      loadingRegister: false,
     };
   },
   mounted() {
@@ -152,6 +161,12 @@ export default {
           console.log("Received values of form: ", values);
         }
       });
+    },
+    handleRegister() {
+      this.loadingRegister = true;
+      setTimeout(() => {
+        this.loadingRegister = false;
+      }, 1000);
     },
   },
 };
