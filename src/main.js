@@ -5,6 +5,9 @@ import router from "./router";
 import store from "./store";
 import "ant-design-vue/dist/antd.css";
 
+// Tailwind CSS
+import "@/assets/css/tailwind.css";
+
 // Vue Mixin
 import "./mixins";
 
