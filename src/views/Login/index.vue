@@ -90,6 +90,7 @@
               block
               html-type="submit"
               :disabled="hasErrors(form.getFieldsError())"
+              :loading="loading"
             >
               <span class="font-airbnb-medium tracking-wider">Login </span>
             </a-button>
@@ -118,6 +119,7 @@ function hasErrors(fieldsError) {
 }
 
 import { Card, Form, Input, Icon, Button, Divider } from "ant-design-vue";
+import { REGISTER } from "@/router/name.types";
 
 export default {
   components: {
@@ -135,6 +137,7 @@ export default {
       hasErrors,
       form: this.$form.createForm(this, { name: "horizontal_login" }),
       loadingRegister: false,
+      loading: false,
     };
   },
   mounted() {
@@ -158,7 +161,11 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
+          this.loading = true;
           console.log("Received values of form: ", values);
+          setTimeout(() => {
+            this.loading = false;
+          }, 1000);
         }
       });
     },
@@ -166,6 +173,7 @@ export default {
       this.loadingRegister = true;
       setTimeout(() => {
         this.loadingRegister = false;
+        this.$router.push({ name: REGISTER });
       }, 1000);
     },
   },
