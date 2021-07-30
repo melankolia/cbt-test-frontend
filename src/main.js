@@ -4,6 +4,7 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 import "ant-design-vue/dist/antd.css";
+import { Modal } from "ant-design-vue";
 
 // Tailwind CSS
 import "@/assets/css/tailwind.css";
@@ -15,6 +16,8 @@ import "./mixins";
 import "./filters/case.filter";
 
 Vue.config.productionTip = false;
+
+Vue.use(Modal);
 
 new Vue({
   router,

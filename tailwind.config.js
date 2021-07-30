@@ -1,11 +1,13 @@
 module.exports = {
-  purge: {
-    enabled: true,
-    content: ["./public/**/*.html", "./src/**/*.vue", "./src/main.js"],
-  },
+  purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.vue"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: (theme) => ({
+        ...theme("colors"),
+        primary: "#3590ff",
+      }),
+    },
     fontFamily: {
       airbnb: ["Airbnb Cereal App Book"],
       "airbnb-light": ["Airbnb Cereal App Light"],
@@ -16,7 +18,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ["active"],
+    },
   },
   plugins: [],
 };
