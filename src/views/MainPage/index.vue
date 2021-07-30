@@ -57,6 +57,7 @@
             flex flex-row
             items-center
           "
+          @click="goToDepression"
         >
           <img
             class="mr-8"
@@ -76,6 +77,7 @@
             flex flex-row
             items-center
           "
+          @click="goToCBT"
         >
           <img
             class="mr-8"
@@ -93,7 +95,7 @@
 
 <script>
 import { Avatar, Button } from "ant-design-vue";
-import { ANXIETY } from "@/router/name.types";
+import { ANXIETY, DEPRESSION, FIRST_CBT } from "@/router/name.types";
 
 export default {
   components: {
@@ -102,8 +104,13 @@ export default {
   },
   methods: {
     goToAnxiety() {
-      console.log("GO");
       this.$router.push({ name: ANXIETY });
+    },
+    goToDepression() {
+      this.$router.push({ name: DEPRESSION });
+    },
+    goToCBT() {
+      this.$router.push({ name: FIRST_CBT });
     },
   },
 };

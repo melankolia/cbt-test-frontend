@@ -2,7 +2,6 @@
   <a-modal
     v-model="visible"
     :title="title"
-    :closable="false"
     :maskClosable="false"
     on-ok="handleOk"
   >
