@@ -1,51 +1,58 @@
 <template>
-  <div class="min-h-screen px-6 py-8 flex flex-col justify-center">
-    <div class="bg-white rounded-xl p-6">
-      <p class="font-airbnb-medium text-base mb-0 text-center">
-        Test Tingkat Ansietas
-      </p>
-      <p class="font-airbnb-medium text-base mb-0 text-center">(Kecemasanmu)</p>
-      <div class="my-8">
-        <div class="my-4" v-for="question in questions" :key="question">
-          <p class="font-airbnb mb-1">
-            {{ question }}
-          </p>
-          <a-select style="width: 100%" @change="handleChange">
-            <a-select-option v-for="item in answerList" :key="item">
-              <span class="font-airbnb-medium text-sm">{{ item }}</span>
-            </a-select-option>
-          </a-select>
+  <div>
+    <a-button
+      class="button-back"
+      shape="circle"
+      icon="left"
+      @click="handleBack"
+    />
+    <div class="min-h-screen px-6 py-8 flex flex-col justify-center">
+      <div class="bg-white rounded-xl p-6">
+        <p class="font-airbnb-medium text-base mb-0 text-center">
+          Test Tingkat Ansietas
+        </p>
+        <p class="font-airbnb-medium text-base mb-0 text-center">
+          (Kecemasanmu)
+        </p>
+        <div class="my-8">
+          <div class="my-4" v-for="question in questions" :key="question">
+            <p class="font-airbnb mb-1">
+              {{ question }}
+            </p>
+            <a-select style="width: 100%" @change="handleChange">
+              <a-select-option v-for="item in answerList" :key="item">
+                <span class="font-airbnb-medium text-sm">{{ item }}</span>
+              </a-select-option>
+            </a-select>
+          </div>
         </div>
+        <a-button @click="handleSubmit" block type="primary" :loading="loading">
+          <span class="font-airbnb">Next</span>
+        </a-button>
       </div>
-      <a-button @click="handleSubmit" block type="primary" :loading="loading">
-        <span class="font-airbnb">Next</span>
-      </a-button>
     </div>
-    <Modal
+    <ModalResult
       title="Hasil Tingkat Tingkatan Ansietas"
       :visible="visible"
       :handleOk="handleOk"
       :handleCancel="handleCancel"
       :loading="loadingOk"
-    >
-      <template #content>
-        <p>GOOD</p>
-      </template>
-    </Modal>
+      :status="result.status"
+    />
   </div>
 </template>
 
 <script>
 import { Button, Select } from "ant-design-vue";
-import Modal from "@/components/Modal/general";
-import { DEPRESSION } from "@/router/name.types";
+import ModalResult from "@/components/Modal/result";
+import { MAIN_PAGE, FIRST_CBT } from "@/router/name.types";
 
 export default {
   components: {
     "a-button": Button,
     "a-select": Select,
     "a-select-option": Select.Option,
-    Modal,
+    ModalResult,
   },
   data() {
     return {
@@ -65,9 +72,16 @@ export default {
         "2. Tidak Setuju",
         "1. Sangat Tidak Setuju",
       ],
+      result: {
+        total: 1,
+        status: "rendah",
+      },
     };
   },
   methods: {
+    handleBack() {
+      this.$router.replace({ name: MAIN_PAGE });
+    },
     handleChange(e) {
       console.log(e);
     },
@@ -79,7 +93,7 @@ export default {
       setTimeout(() => {
         this.loadingOk = false;
         this.visible = false;
-        this.$router.push({ name: DEPRESSION });
+        this.$router.replace({ name: FIRST_CBT });
       }, 1000);
     },
     handleSubmit() {
@@ -93,4 +107,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.button-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+</style>

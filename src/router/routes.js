@@ -7,6 +7,7 @@ const Register = () => import("../views/Register");
 const MainPage = () => import("../views/MainPage");
 const Anxiety = () => import("../views/Quiz/Anxiety");
 const Depression = () => import("../views/Quiz/Depression");
+const FirstCBT = () => import("../views/Quiz/CBT/SectionFirst");
 
 import {
   HOME,
@@ -17,6 +18,7 @@ import {
   MAIN_PAGE,
   ANXIETY,
   DEPRESSION,
+  FIRST_CBT,
 } from "./name.types";
 
 export const configRoutes = [
@@ -55,6 +57,21 @@ export const configRoutes = [
     path: "/depression",
     name: DEPRESSION,
     component: Depression,
+  },
+  {
+    path: "/cbt",
+    component: {
+      render(c) {
+        return c("router-view");
+      },
+    },
+    children: [
+      {
+        path: "",
+        name: FIRST_CBT,
+        component: FirstCBT,
+      },
+    ],
   },
   {
     path: "/login",

@@ -6,3 +6,4 @@ export const LANDING_PAGE = `landing-page`;
 export const MAIN_PAGE = `main-page`;
 export const ANXIETY = `axiety`;
 export const DEPRESSION = `depression`;
+export const FIRST_CBT = `firstCBT`;
