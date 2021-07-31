@@ -119,7 +119,7 @@ function hasErrors(fieldsError) {
 }
 
 import { Card, Form, Input, Icon, Button, Divider } from "ant-design-vue";
-import { REGISTER } from "@/router/name.types";
+import { REGISTER, MAIN_PAGE } from "@/router/name.types";
 
 export default {
   components: {
@@ -165,6 +165,7 @@ export default {
           console.log("Received values of form: ", values);
           setTimeout(() => {
             this.loading = false;
+            this.$router.replace({ name: MAIN_PAGE });
           }, 1000);
         }
       });
