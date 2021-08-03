@@ -1,6 +1,7 @@
 import { intialQuestionState } from "../states";
 import {
   SET_QUESTION_SECUREID,
+  SET_FINAL_ANSWER,
   RESET_QUESTION_STATE,
 } from "../constants/mutations.type";
 
@@ -12,6 +13,9 @@ const getters = {
   getSecureId(state) {
     return state.question.secureId;
   },
+  getFinalAnswer(state) {
+    return state.question.finalAnswer;
+  },
 };
 
 const mutations = {
@@ -20,6 +24,9 @@ const mutations = {
   },
   [SET_QUESTION_SECUREID](state, payload) {
     state.question.secureId = payload;
+  },
+  [SET_FINAL_ANSWER](state, payload) {
+    state.question.finalAnswer = payload;
   },
 };
 

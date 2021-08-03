@@ -10,6 +10,7 @@ const Depression = () => import("../views/Quiz/Depression");
 const FirstCBT = () => import("../views/Quiz/CBT/SectionFirst");
 const MainCBT = () => import("../views/Quiz/CBT/SectionMain");
 const PracticesCBT = () => import("../views/Quiz/CBT/SectionPractice");
+const FinalScreen = () => import("../views/Final/index.vue");
 
 import {
   HOME,
@@ -23,6 +24,7 @@ import {
   FIRST_CBT,
   MAIN_CBT,
   PRACTICES_CBT,
+  FINAL_SCREEN,
 } from "./name.types";
 
 export const configRoutes = [
@@ -86,6 +88,11 @@ export const configRoutes = [
         component: PracticesCBT,
       },
     ],
+  },
+  {
+    path: "/final",
+    name: FINAL_SCREEN,
+    component: FinalScreen,
   },
   {
     path: "/login",

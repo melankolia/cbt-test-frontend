@@ -9,3 +9,4 @@ export const DEPRESSION = `depression`;
 export const FIRST_CBT = `firstCBT`;
 export const MAIN_CBT = `mainCBT`;
 export const PRACTICES_CBT = `practicesCBT`;
+export const FINAL_SCREEN = `finalScreen`;
