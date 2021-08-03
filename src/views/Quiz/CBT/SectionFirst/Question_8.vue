@@ -1,14 +1,13 @@
 <template>
   <div class="text-center my-4">
-    <p class="font-airbnb-medium text-base my-2">Step 1</p>
-    <p class="font-airbnb-bold text-base my-2">Bagaimana situasinya?</p>
+    <p class="font-airbnb-medium text-base my-2">Step 8</p>
     <p class="font-airbnb-light mt-2 mb-4">
-      “Tuliskan situasi(keadaan) yang menyebabkan anda sering berpikir negatif
-      atau mempunyai perasaan negatif?"
+      Apa yang kamu Lakukan ? <br />
+      (Prilaku)
     </p>
     <a-textarea
       v-model="data.answer"
-      placeholder="Contoh: Saya sedang jalan-jalan lalu bertemu tetangga, saya menegurnya tapi saya malah diabaikan"
+      placeholder="Contoh : saya lebih senang menyendiri dirumah"
       :auto-size="{ minRows: 4 }"
     />
   </div>

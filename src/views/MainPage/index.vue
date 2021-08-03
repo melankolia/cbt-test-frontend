@@ -1,10 +1,10 @@
 <template>
   <div class="min-h-screen flex flex-col">
     <div class="home-style p-6">
-      <div class="flex flex-row justify-between align-center">
+      <!-- <div class="flex flex-row justify-between align-center">
         <a-avatar shape="circle" size="large" icon="user" />
         <a-button shape="circle" size="large" icon="menu" type="primary" />
-      </div>
+      </div> -->
       <p
         class="
           font-airbnb-bold
@@ -94,14 +94,14 @@
 </template>
 
 <script>
-import { Avatar, Button } from "ant-design-vue";
+// import { Avatar, Button } from "ant-design-vue";
 import { ANXIETY, DEPRESSION, FIRST_CBT } from "@/router/name.types";
 
 export default {
-  components: {
-    "a-avatar": Avatar,
-    "a-button": Button,
-  },
+  // components: {
+  //   "a-avatar": Avatar,
+  //   "a-button": Button,
+  // },
   methods: {
     goToAnxiety() {
       this.$router.push({ name: ANXIETY });

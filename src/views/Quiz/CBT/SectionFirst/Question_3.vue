@@ -3,18 +3,38 @@
     <p class="font-airbnb-medium text-base my-2">Step 3</p>
     <p class="font-airbnb-light mt-2 mb-4">Apa Lagi Yang Kamu pikirkan?</p>
     <a-textarea
+      v-model="answer"
       placeholder="Contoh : Dia marah kesaya karena saya pernah menabrak motornya.Saya memang orang paling ceroboh "
       :auto-size="{ minRows: 4 }"
     />
+    <div class="mb-4"></div>
+    <a-button @click="handleNext" block type="primary">
+      <span class="font-airbnb">Next</span>
+    </a-button>
   </div>
 </template>
 
 <script>
-import { Input } from "ant-design-vue";
+import { Input, Button } from "ant-design-vue";
 
 export default {
   components: {
     "a-textarea": Input.TextArea,
+    "a-button": Button,
+  },
+  props: {
+    data: { type: Object, required: true, default: () => {} },
+  },
+  data() {
+    return {
+      answer: "",
+    };
+  },
+  methods: {
+    handleNext() {
+      this.data.answer.push(this.answer);
+      this.$emit("handleNext");
+    },
   },
 };
 </script>

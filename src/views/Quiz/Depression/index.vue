@@ -12,6 +12,25 @@
           <p class="font-airbnb-medium text-base mb-0 text-center">
             Test Tingkat Depresi
           </p>
+          <div
+            class="
+              flex flex-row
+              justify-center
+              items-center
+              px-3
+              mt-8
+              rounded-xl
+            "
+            style="background-color: #d6efff"
+          >
+            <a-icon type="info-circle" />
+            <p class="ml-3 m-4">
+              <span class="font-bold">Keterangan :</span> <br />
+              Kadang kadang (1-2x seminggu) <br />
+              Sering (3-4x seminggu) <br />
+              Selalu (setiap hari)
+            </p>
+          </div>
           <div class="my-8">
             <div
               class="my-4"
@@ -59,7 +78,7 @@
 </template>
 
 <script>
-import { Button, FormModel, Select } from "ant-design-vue";
+import { Button, FormModel, Select, Icon } from "ant-design-vue";
 import ModalResult from "@/components/Modal/result";
 import { MAIN_PAGE, FIRST_CBT } from "@/router/name.types";
 
@@ -70,6 +89,7 @@ export default {
     "a-form-model-item": FormModel.Item,
     "a-select": Select,
     "a-select-option": Select.Option,
+    "a-icon": Icon,
     ModalResult,
   },
   data() {
