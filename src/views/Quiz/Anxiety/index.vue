@@ -16,14 +16,7 @@
             (Kecemasanmu)
           </p>
           <div
-            class="
-              flex flex-row
-              justify-center
-              items-center
-              px-3
-              mt-8
-              rounded-xl
-            "
+            class="flex flex-row items-center px-3 mt-8 rounded-xl"
             style="background-color: #d6efff"
           >
             <a-icon type="info-circle" />

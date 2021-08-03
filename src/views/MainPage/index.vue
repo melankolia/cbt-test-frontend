@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <div class="home-style p-6">
+    <div class="home-style px-6 pt-6">
       <!-- <div class="flex flex-row justify-between align-center">
         <a-avatar shape="circle" size="large" icon="user" />
         <a-button shape="circle" size="large" icon="menu" type="primary" />
@@ -20,7 +20,7 @@
       >
         Beranda CBT
       </p>
-      <img src="@/assets/images/doctor.jpg" alt="beranda-cbt" />
+      <img class="mt-6" src="@/assets/images/doctor.jpg" alt="beranda-cbt" />
     </div>
     <div class="m-6">
       <p class="font-airbnb-light text-xl bg-blend-color mb-0">Hello,</p>

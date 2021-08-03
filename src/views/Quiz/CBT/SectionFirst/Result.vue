@@ -51,9 +51,9 @@
     >
       <template #content>
         <p class="font-airbnb-medimum text-center text-xl mb-4">Anda Cerdas</p>
-        <p class="font-airbnb text-center">
-          KEJUJURANMU ADALAH AWAL DARI SUATU PENCAPAIAN DIRI YANG BAIK MENUJU
-          KEBAHAGIAAN HIDUP
+        <p class="font-airbnb text-lg text-center">
+          Kejujuranmu adalah awal dari suatu pencapaian diri yang baik menuju
+          kebahagaiaan hidup
         </p>
       </template>
     </ModalResult>
@@ -63,6 +63,7 @@
 <script>
 const ModalResult = () => import("@/components/Modal/general");
 import { Button } from "ant-design-vue";
+import { MAIN_CBT } from "@/router/name.types";
 
 export default {
   components: {
@@ -86,11 +87,11 @@ export default {
       result = [...result, this.questions[1].answer.join(", ")];
       result = [...result, this.questions[2].answer.join(", ")];
       this.result = result.join(", ");
-      console.log(this.result);
     },
     handleOk() {
       this.loadingOk = true;
       setTimeout(() => {
+        this.$router.push({ name: MAIN_CBT });
         this.visible = false;
         this.loadingOk = false;
       }, 1000);

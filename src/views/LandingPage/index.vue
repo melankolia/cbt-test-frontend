@@ -1,5 +1,5 @@
 <template>
-  <div class="container-landing flex flex-col justify-between pt-20 pb-10">
+  <div class="container-landing flex flex-col justify-between pt-16 pb-10">
     <div>
       <p class="font-airbnb-bold text-3xl bg-blend-color mb-0">
         Welcome to CBT
