@@ -47,3 +47,7 @@
   src: local("Airbnb Cereal App Black"),
     url("/fonts/AirbnbCerealBlack.woff") format("woff");
 }
+
+.ant-form-item-control {
+  line-height: normal !important;
+}

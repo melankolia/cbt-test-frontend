@@ -33,21 +33,11 @@
         Login
       </p>
       <a-card hoverable style="padding: 1rem 0">
-        <a-form :form="form" @submit="handleSubmit">
-          <a-form-item
-            :validate-status="userNameError() ? 'error' : ''"
-            :help="userNameError() || ''"
-          >
+        <a-form-model ref="ruleForm" :model="form" :rules="rules">
+          <a-form-item-model prop="username">
             <a-input
+              v-model="form.username"
               size="large"
-              v-decorator="[
-                'userName',
-                {
-                  rules: [
-                    { required: true, message: 'Please input your Username!' },
-                  ],
-                },
-              ]"
               placeholder="Username"
             >
               <a-icon
@@ -56,21 +46,11 @@
                 style="color: rgba(0, 0, 0, 0.25)"
               />
             </a-input>
-          </a-form-item>
-          <a-form-item
-            :validate-status="passwordError() ? 'error' : ''"
-            :help="passwordError() || ''"
-          >
+          </a-form-item-model>
+          <a-form-item-model prop="password">
             <a-input-password
+              v-model="form.password"
               size="large"
-              v-decorator="[
-                'password',
-                {
-                  rules: [
-                    { required: true, message: 'Please input your Password!' },
-                  ],
-                },
-              ]"
               type="password"
               placeholder="Password"
               allow-clear
@@ -81,16 +61,15 @@
                 style="color: rgba(0, 0, 0, 0.25)"
               />
             </a-input-password>
-          </a-form-item>
-          <a-form-item style="margin-bottom: 0">
+          </a-form-item-model>
+          <a-form-item-model style="margin-bottom: 0">
             <a-button
               class="mt-10"
               size="large"
               type="primary"
               block
-              html-type="submit"
-              :disabled="hasErrors(form.getFieldsError())"
               :loading="loading"
+              @click="handleSubmit"
             >
               <span class="font-airbnb-medium tracking-wider">Login </span>
             </a-button>
@@ -106,26 +85,22 @@
             >
               <span class="font-airbnb-medium tracking-wider">Register </span>
             </a-button>
-          </a-form-item>
-        </a-form>
+          </a-form-item-model>
+        </a-form-model>
       </a-card>
     </div>
   </div>
 </template>
 
 <script>
-function hasErrors(fieldsError) {
-  return Object.keys(fieldsError).some((field) => fieldsError[field]);
-}
-
-import { Card, Form, Input, Icon, Button, Divider } from "ant-design-vue";
+import { Card, FormModel, Input, Icon, Button, Divider } from "ant-design-vue";
 import { REGISTER, MAIN_PAGE } from "@/router/name.types";
 
 export default {
   components: {
     "a-card": Card,
-    "a-form": Form,
-    "a-form-item": Form.Item,
+    "a-form-model": FormModel,
+    "a-form-item-model": FormModel.Item,
     "a-input": Input,
     "a-input-password": Input.Password,
     "a-icon": Icon,
@@ -134,39 +109,34 @@ export default {
   },
   data() {
     return {
-      hasErrors,
-      form: this.$form.createForm(this, { name: "horizontal_login" }),
+      form: {
+        username: "",
+        password: "",
+      },
+      rules: {
+        username: {
+          required: true,
+          message: "Please input your username",
+          trigger: "change",
+        },
+        password: {
+          required: true,
+          message: "Please input your password",
+          trigger: "change",
+        },
+      },
       loadingRegister: false,
       loading: false,
     };
   },
-  mounted() {
-    // this.$nextTick(() => {
-    // To disabled submit button at the beginning.
-    // this.form.validateFields();
-    // });
-  },
   methods: {
-    // Only show error after a field is touched.
-    userNameError() {
-      const { getFieldError, isFieldTouched } = this.form;
-      return isFieldTouched("userName") && getFieldError("userName");
-    },
-    // Only show error after a field is touched.
-    passwordError() {
-      const { getFieldError, isFieldTouched } = this.form;
-      return isFieldTouched("password") && getFieldError("password");
-    },
-    handleSubmit(e) {
-      e.preventDefault();
-      this.form.validateFields((err, values) => {
-        if (!err) {
-          this.loading = true;
-          console.log("Received values of form: ", values);
-          setTimeout(() => {
-            this.loading = false;
-            this.$router.replace({ name: MAIN_PAGE });
-          }, 1000);
+    handleSubmit() {
+      this.$refs.ruleForm.validate((valid) => {
+        if (valid) {
+          this.$router.push({ name: MAIN_PAGE });
+        } else {
+          console.log("error submit!!");
+          return false;
         }
       });
     },

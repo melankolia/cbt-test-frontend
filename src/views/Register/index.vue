@@ -33,22 +33,12 @@
         Register
       </p>
       <a-card hoverable style="padding: 1rem 0">
-        <a-form :form="form" @submit="handleRegister">
-          <a-form-item
-            :validate-status="nameError() ? 'error' : ''"
-            :help="nameError() || ''"
-          >
+        <a-form-model ref="ruleForm" :model="form" :rules="rules">
+          <a-form-model-item prop="fullname">
             <a-input
+              v-model="form.fullname"
               size="large"
-              v-decorator="[
-                'name',
-                {
-                  rules: [
-                    { required: true, message: 'Please input your Name!' },
-                  ],
-                },
-              ]"
-              placeholder="Name"
+              placeholder="Full Name"
             >
               <a-icon
                 slot="prefix"
@@ -56,21 +46,11 @@
                 style="color: rgba(0, 0, 0, 0.25)"
               />
             </a-input>
-          </a-form-item>
-          <a-form-item
-            :validate-status="userNameError() ? 'error' : ''"
-            :help="userNameError() || ''"
-          >
+          </a-form-model-item>
+          <a-form-model-item prop="username">
             <a-input
+              v-model="form.username"
               size="large"
-              v-decorator="[
-                'userName',
-                {
-                  rules: [
-                    { required: true, message: 'Please input your Username!' },
-                  ],
-                },
-              ]"
               placeholder="Username"
             >
               <a-icon
@@ -79,21 +59,11 @@
                 style="color: rgba(0, 0, 0, 0.25)"
               />
             </a-input>
-          </a-form-item>
-          <a-form-item
-            :validate-status="passwordError() ? 'error' : ''"
-            :help="passwordError() || ''"
-          >
+          </a-form-model-item>
+          <a-form-model-item prop="password">
             <a-input-password
+              v-model="form.password"
               size="large"
-              v-decorator="[
-                'password',
-                {
-                  rules: [
-                    { required: true, message: 'Please input your Password!' },
-                  ],
-                },
-              ]"
               type="password"
               placeholder="Password"
               allow-clear
@@ -104,64 +74,34 @@
                 style="color: rgba(0, 0, 0, 0.25)"
               />
             </a-input-password>
-          </a-form-item>
-          <a-form-item
-            :validate-status="noRespondenError() ? 'error' : ''"
-            :help="noRespondenError() || ''"
-          >
-            <a-input
-              size="large"
-              v-decorator="[
-                'noResponden',
-                {
-                  rules: [
-                    {
-                      required: true,
-                      message: 'Please input your No Responden!',
-                    },
-                  ],
-                },
-              ]"
-              placeholder="No Responden"
-              allow-clear
-            >
-              <a-icon
-                slot="prefix"
-                type="user"
-                style="color: rgba(0, 0, 0, 0.25)"
-              />
-            </a-input>
-          </a-form-item>
-          <a-form-item style="margin-bottom: 0">
+          </a-form-model-item>
+          <a-form-model-item style="margin-bottom: 0">
             <a-button
               :loading="loading"
               class="mt-4"
               size="large"
               block
               type="primary"
-              html-type="submit"
+              @click="handleRegister"
             >
               <span class="font-airbnb-medium tracking-wider">Register </span>
             </a-button>
-          </a-form-item>
-        </a-form>
+          </a-form-model-item>
+        </a-form-model>
       </a-card>
     </div>
   </div>
 </template>
 
 <script>
-function hasErrors(fieldsError) {
-  return Object.keys(fieldsError).some((field) => fieldsError[field]);
-}
-import { Card, Form, Input, Icon, Button } from "ant-design-vue";
+import { Card, FormModel, Input, Icon, Button } from "ant-design-vue";
 import { MAIN_PAGE } from "@/router/name.types";
 
 export default {
   components: {
     "a-card": Card,
-    "a-form": Form,
-    "a-form-item": Form.Item,
+    "a-form-model": FormModel,
+    "a-form-model-item": FormModel.Item,
     "a-input": Input,
     "a-input-password": Input.Password,
     "a-icon": Icon,
@@ -169,42 +109,43 @@ export default {
   },
   data() {
     return {
-      hasErrors,
-      form: this.$form.createForm(this, { name: "horizontal_login" }),
+      form: {
+        fullname: "",
+        username: "",
+        password: "",
+      },
+      rules: {
+        fullname: {
+          required: true,
+          message: "Please input your fullname",
+          trigger: "change",
+        },
+        username: {
+          required: true,
+          message: "Please input your username",
+          trigger: "change",
+        },
+        password: {
+          required: true,
+          message: "Please input your password",
+          trigger: "change",
+        },
+      },
       loading: false,
     };
   },
   methods: {
-    // Only show error after a field is touched.
-    nameError() {
-      const { getFieldError, isFieldTouched } = this.form;
-      return isFieldTouched("name") && getFieldError("name");
-    },
-    // Only show error after a field is touched.
-    userNameError() {
-      const { getFieldError, isFieldTouched } = this.form;
-      return isFieldTouched("userName") && getFieldError("userName");
-    },
-    // Only show error after a field is touched.
-    passwordError() {
-      const { getFieldError, isFieldTouched } = this.form;
-      return isFieldTouched("password") && getFieldError("password");
-    },
-    // Only show error after a field is touched.
-    noRespondenError() {
-      const { getFieldError, isFieldTouched } = this.form;
-      return isFieldTouched("noResponden") && getFieldError("noResponden");
-    },
-    handleRegister(e) {
-      e.preventDefault();
-      this.form.validateFields((err, values) => {
-        if (!err) {
+    handleRegister() {
+      this.$refs.ruleForm.validate((valid) => {
+        if (valid) {
           this.loading = true;
-          console.log("Received values of form: ", values);
           setTimeout(() => {
             this.$router.push({ name: MAIN_PAGE });
             this.loading = false;
           }, 1000);
+        } else {
+          console.log("error submit!!");
+          return false;
         }
       });
     },
