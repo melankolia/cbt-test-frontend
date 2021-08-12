@@ -8,6 +8,9 @@
       :auto-size="{ minRows: 4 }"
     />
     <div class="mb-4"></div>
+    <a-button @click="handlePrev" block class="mb-2">
+      <span class="font-airbnb">Prev</span>
+    </a-button>
     <a-button @click="handleNext" block type="primary">
       <span class="font-airbnb">Next</span>
     </a-button>
@@ -31,6 +34,9 @@ export default {
     };
   },
   methods: {
+    handlePrev() {
+      this.$emit("handleBack");
+    },
     handleNext() {
       this.data.answer.push(this.answer);
       this.$emit("handleNext");

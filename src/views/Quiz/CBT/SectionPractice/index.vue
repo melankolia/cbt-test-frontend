@@ -9,7 +9,7 @@
     <div class="min-h-screen px-6 pt-20 pb-8 flex flex-col">
       <div class="bg-white rounded-xl p-6">
         <p class="font-airbnb-medium text-base mb-0 text-center">
-          Latihan Inti CBT
+          Aplikasi Latihan CBT
         </p>
         <components
           :is="question.component"
@@ -18,16 +18,25 @@
           @handleNext="(e) => handleNext(e)"
           @handleBack="handlePrev"
         />
-        <a-button
-          v-if="!hideNavigation"
-          @click="handleNext"
-          block
-          type="primary"
-          :loading="loading"
-          :disabled="loading"
-        >
-          <span class="font-airbnb">Next</span>
-        </a-button>
+        <template v-if="!hideNavigation">
+          <a-button
+            @click="handlePrev"
+            block
+            :disabled="disabledPrev || loading"
+            class="mb-2"
+          >
+            <span class="font-airbnb">Prev</span>
+          </a-button>
+          <a-button
+            @click="handleNext"
+            block
+            type="primary"
+            :loading="loading"
+            :disabled="loading"
+          >
+            <span class="font-airbnb">Next</span>
+          </a-button>
+        </template>
       </div>
     </div>
     <FootlessModal :visible="visible" title="Result">
@@ -127,6 +136,12 @@ export default {
     };
   },
   computed: {
+    disabledPrev() {
+      return this.question.no === 0;
+    },
+    disabledNext() {
+      return this.question.no == this.questions.length - 1;
+    },
     submitNext() {
       return this.question.no == this.questions.length - 1;
     },

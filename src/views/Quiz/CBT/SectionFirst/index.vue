@@ -19,22 +19,33 @@
           @handleNext="(e) => handleNext(e)"
           @handleBack="handlePrev"
         />
-        <a-button
-          v-if="!hideNavigation"
-          @click="handleNext"
-          block
-          type="primary"
-          :loading="loading"
-          :disabled="disabledNext"
-        >
-          <span class="font-airbnb">Next</span>
-        </a-button>
+        <template v-if="!hideNavigation">
+          <a-button
+            @click="handlePrev"
+            block
+            :loading="loading"
+            :disabled="disabledPrev"
+            class="mb-2"
+          >
+            <span class="font-airbnb">Prev</span>
+          </a-button>
+          <a-button
+            @click="handleNext"
+            block
+            type="primary"
+            :loading="loading"
+            :disabled="disabledNext"
+          >
+            <span class="font-airbnb">Next</span>
+          </a-button>
+        </template>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 import { Button } from "ant-design-vue";
 import { MAIN_PAGE } from "@/router/name.types";
 import {
@@ -51,6 +62,7 @@ import {
   Question_10,
   Result,
 } from "./Questions";
+import { RESET_ANSWER_Q5 } from "@/store/constants/mutations.type";
 
 export default {
   components: {
@@ -105,12 +117,12 @@ export default {
           no: 4,
           title: "Jenis Distorsi Pikiran",
           component: Question_5,
-          answer: "",
+          answer: [],
         },
         {
           no: 5,
           component: Question_5_Detail,
-          answer: "",
+          answer: [],
         },
         {
           no: 6,
@@ -150,9 +162,9 @@ export default {
     };
   },
   computed: {
-    // disabledPrev() {
-    //   return this.question.no === 0;
-    // },
+    disabledPrev() {
+      return this.question.no === 0;
+    },
     disabledNext() {
       return this.question.no == this.questions.length - 1;
     },
@@ -166,6 +178,7 @@ export default {
     },
   },
   methods: {
+    ...mapMutations([RESET_ANSWER_Q5]),
     handleBack() {
       this.$router.replace({ name: MAIN_PAGE });
     },
@@ -181,6 +194,9 @@ export default {
     handlePop() {
       this.question = this.questions[1];
     },
+  },
+  mounted() {
+    this[RESET_ANSWER_Q5]();
   },
 };
 </script>

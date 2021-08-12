@@ -1,3 +1,7 @@
-import { intialQuestionState } from "./question.state";
+import {
+  intialQuestionState,
+  initialDistortionState,
+  initialAnswerQ5,
+} from "./question.state";
 
-export { intialQuestionState };
+export { intialQuestionState, initialDistortionState, initialAnswerQ5 };

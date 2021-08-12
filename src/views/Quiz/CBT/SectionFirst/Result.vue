@@ -10,7 +10,7 @@
       <hr />
 
       <p class="font-airbnb-medium">Jenis dan Distorsi pikiran</p>
-      <p class="mt-0 text-sm">{{ questions[5].answer || "-" }}</p>
+      <p class="mt-0 text-sm">{{ distortions || "-" }}</p>
       <hr />
 
       <p class="font-airbnb-medium">Perasaan</p>
@@ -64,6 +64,7 @@
 const ModalResult = () => import("@/components/Modal/general");
 import { Button } from "ant-design-vue";
 import { MAIN_CBT } from "@/router/name.types";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -80,6 +81,16 @@ export default {
       loadingOk: false,
       loading: false,
     };
+  },
+  computed: {
+    ...mapGetters(["getAnswerQ5", "getDistortions"]),
+    distortions() {
+      const filtered = [];
+      this.getAnswerQ5.forEach((e) => {
+        filtered.push(this.getDistortions.detail[e].title);
+      });
+      return filtered.join(", ");
+    },
   },
   methods: {
     reducingData() {
