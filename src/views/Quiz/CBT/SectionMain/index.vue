@@ -18,16 +18,26 @@
           @handleNext="(e) => handleNext(e)"
           @handleBack="handlePrev"
         />
-        <a-button
-          v-if="!hideNavigation"
-          @click="handleNext"
-          block
-          type="primary"
-          :loading="loading"
-          :disabled="disabledNext"
-        >
-          <span class="font-airbnb">Next</span>
-        </a-button>
+        <template v-if="!hideNavigation">
+          <a-button
+            @click="handlePrev"
+            block
+            :loading="loading"
+            :disabled="disabledPrev"
+            class="mb-2"
+          >
+            <span class="font-airbnb">Prev</span>
+          </a-button>
+          <a-button
+            @click="handleNext"
+            block
+            type="primary"
+            :loading="loading"
+            :disabled="disabledNext"
+          >
+            <span class="font-airbnb">Next</span>
+          </a-button>
+        </template>
       </div>
     </div>
   </div>
@@ -142,6 +152,9 @@ export default {
     };
   },
   computed: {
+    disabledPrev() {
+      return this.question.no === 0;
+    },
     disabledNext() {
       return this.question.no == this.questions.length - 1;
     },
