@@ -95,6 +95,7 @@
 <script>
 import { Card, FormModel, Input, Icon, Button, Divider } from "ant-design-vue";
 import { REGISTER, MAIN_PAGE } from "@/router/name.types";
+import AuthService from "@/services/resources/auth.service";
 
 export default {
   components: {
@@ -133,12 +134,28 @@ export default {
     handleSubmit() {
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
-          this.$router.push({ name: MAIN_PAGE });
+          this.submitData();
         } else {
-          console.log("error submit!!");
+          this.$message.error("error submit!!", 2.5);
           return false;
         }
       });
+    },
+    submitData() {
+      this.loading = true;
+      AuthService.login(this.form)
+        .then((data) => {
+          console.log(data);
+          this.$message.success("Login Successfull");
+          this.$router.push({ name: MAIN_PAGE });
+        })
+        .catch((err) => {
+          this.$message.error(
+            err?.response?.data?.result || "Login Failed, Please try again !",
+            2.5
+          );
+        })
+        .finally(() => (this.loading = false));
     },
     handleRegister() {
       this.loadingRegister = true;

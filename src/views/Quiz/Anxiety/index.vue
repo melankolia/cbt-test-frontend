@@ -195,6 +195,7 @@ export default {
     handleSubmit() {
       this.loading = true;
       this.$refs.ruleForm.validate((valid) => {
+        console.log(this.form);
         if (valid) {
           setTimeout(() => {
             this.loading = false;
