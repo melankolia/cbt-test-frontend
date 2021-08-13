@@ -144,10 +144,16 @@ export default {
     submitData() {
       this.loading = true;
       AuthService.login(this.form)
-        .then((data) => {
-          console.log(data);
-          this.$message.success("Login Successfull");
-          this.$router.push({ name: MAIN_PAGE });
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            this.$message.success("Login Successfull");
+            this.$router.push({ name: MAIN_PAGE });
+          } else {
+            this.$message.error(
+              result || "Login Failed, Please try again later !",
+              2.5
+            );
+          }
         })
         .catch((err) => {
           this.$message.error(
