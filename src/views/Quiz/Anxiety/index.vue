@@ -37,11 +37,7 @@
                 <p class="font-airbnb mb-1">
                   {{ question }}
                 </p>
-                <a-select
-                  v-model="form[`q${index + 1}`]"
-                  style="width: 100%"
-                  @change="handleChange"
-                >
+                <a-select v-model="form[`q${index + 1}`]" style="width: 100%">
                   <a-select-option v-for="item in answerList" :key="item.value">
                     <span class="font-airbnb-medium text-sm">{{
                       item.desc
@@ -68,7 +64,8 @@
       :handleOk="handleOk"
       :handleCancel="handleCancel"
       :loading="loadingOk"
-      :status="result.status"
+      :status="status"
+      :desc="description"
     />
   </div>
 </template>
@@ -76,7 +73,9 @@
 <script>
 import { Button, FormModel, Select, Icon } from "ant-design-vue";
 import ModalResult from "@/components/Modal/result";
-import { MAIN_PAGE, FIRST_CBT } from "@/router/name.types";
+import { MAIN_PAGE } from "@/router/name.types";
+import QuizService from "@/services/resources/quiz.service";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -93,6 +92,7 @@ export default {
       loading: false,
       loadingOk: false,
       visible: false,
+      total: 0,
       questions: [
         "1. Kurang tertarik atau bergairah dalam melakukan apapun.",
         "2. Merasa murung, muram atau putus asa.",
@@ -105,21 +105,21 @@ export default {
         "9. Merasa lebih baik mati atau melukai diri sendiri dengan cara apapun.",
       ],
       answerList: [
-        { value: 0, desc: "0. Tidak Pernah" },
-        { value: 1, desc: "1. Kadang-Kadang" },
-        { value: 2, desc: "2. Sering" },
-        { value: 3, desc: "3. Selalu" },
+        { value: 1, desc: "1. Tidak Pernah" },
+        { value: 2, desc: "2. Kadang-Kadang" },
+        { value: 3, desc: "3. Sering" },
+        { value: 4, desc: "4. Selalu" },
       ],
       form: {
-        q1: "",
-        q2: "",
-        q3: "",
-        q4: "",
-        q5: "",
-        q6: "",
-        q7: "",
-        q8: "",
-        q9: "",
+        q1: null,
+        q2: null,
+        q3: null,
+        q4: null,
+        q5: null,
+        q6: null,
+        q7: null,
+        q8: null,
+        q9: null,
       },
       rules: {
         q1: {
@@ -174,6 +174,26 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters(["getUser"]),
+    status() {
+      if (this.total <= 9) return "ringan";
+      else if (this.total <= 14) return "sedang";
+      else if (this.total >= 19) return "berat";
+      return "ringan";
+    },
+    description() {
+      if (this.total <= 4)
+        return "Boleh ya /tidak latihan CBT namun tidak perlu ke terapis";
+      else if (this.total <= 9)
+        return "Perlu Latihan CBT namun tidak perlu ke terapis";
+      else if (this.total <= 14)
+        return "Perlu Latihan CBT dan dianjurkan ke terapis";
+      else if (this.total >= 19)
+        return "Perlu terapis dan penataksanaan psikofarmaka";
+      return "";
+    },
+  },
   methods: {
     handleBack() {
       this.$router.replace({ name: MAIN_PAGE });
@@ -189,7 +209,7 @@ export default {
       setTimeout(() => {
         this.loadingOk = false;
         this.visible = false;
-        this.$router.replace({ name: FIRST_CBT });
+        // this.$router.replace({ name: FIRST_CBT });
       }, 1000);
     },
     handleSubmit() {
@@ -197,16 +217,38 @@ export default {
       this.$refs.ruleForm.validate((valid) => {
         console.log(this.form);
         if (valid) {
-          setTimeout(() => {
-            this.loading = false;
-            this.visible = true;
-          }, 1000);
+          this.submitData();
         } else {
           setTimeout(() => {
             this.loading = false;
           }, 1000);
         }
       });
+    },
+    submitData() {
+      this.loading = true;
+      QuizService.createDataAnsietas({
+        id_user: this.getUser?.id || null,
+        ...this.form,
+      })
+        .then(({ data: { message, result } }) => {
+          if (message == "OK") {
+            this.$message.success("Data anda berhasil diinput");
+            this.total = Object.values(this.form).reduce(
+              (acc, value) => acc + value
+            );
+            this.visible = true;
+          } else {
+            this.$message.error(result || "Data anda gagal diinput", 2.5);
+          }
+        })
+        .catch((err) => {
+          this.$message.error(
+            err?.response?.data?.result || "Data anda gagal diinput",
+            2.5
+          );
+        })
+        .finally(() => (this.loading = false));
     },
   },
 };

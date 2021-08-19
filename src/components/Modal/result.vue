@@ -58,6 +58,9 @@
       <p class="font-airbnb-medium text-2xl mb-0 underline">
         {{ status | toTitle }}
       </p>
+      <p v-if="desc" class="font-airbnb-light text-base mb-0 mt-4">
+        {{ desc }}
+      </p>
     </div>
   </a-modal>
 </template>
@@ -76,6 +79,7 @@ export default {
     handleOk: { type: Function, required: true, default: () => {} },
     loading: { type: Boolean, required: true, default: false },
     status: { type: String, required: true, default: "sedang" },
+    desc: { type: String, required: true, default: null },
   },
 };
 </script>

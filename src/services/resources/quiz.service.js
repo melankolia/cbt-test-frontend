@@ -5,6 +5,9 @@ const QuizService = {
   createDataAnsietas(data) {
     return MainInstance.post(DEPRESI, data);
   },
+  createDataDepresi(data) {
+    return MainInstance.post(DEPRESI, data);
+  },
 };
 
 export default QuizService;
