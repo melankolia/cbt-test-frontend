@@ -24,7 +24,9 @@
     </div>
     <div class="m-6">
       <p class="font-airbnb-light text-xl bg-blend-color mb-0">Hello,</p>
-      <p class="font-airbnb-bold text-2xl bg-blend-color mb-6">Jessika</p>
+      <p class="font-airbnb-bold text-2xl bg-blend-color mb-6">
+        {{ getUser.name || "-" }}
+      </p>
       <div class="flex flex-col space-y-4">
         <div
           class="
@@ -96,12 +98,16 @@
 <script>
 // import { Avatar, Button } from "ant-design-vue";
 import { ANXIETY, DEPRESSION, FIRST_CBT } from "@/router/name.types";
+import { mapGetters } from "vuex";
 
 export default {
   // components: {
   //   "a-avatar": Avatar,
   //   "a-button": Button,
   // },
+  computed: {
+    ...mapGetters(["getUser"]),
+  },
   methods: {
     goToAnxiety() {
       this.$router.push({ name: ANXIETY });

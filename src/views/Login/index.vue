@@ -95,7 +95,8 @@
 <script>
 import { Card, FormModel, Input, Icon, Button, Divider } from "ant-design-vue";
 import { REGISTER, MAIN_PAGE } from "@/router/name.types";
-import AuthService from "@/services/resources/auth.service";
+import { mapActions } from "vuex";
+import { LOGIN } from "@/store/constants/actions.type";
 
 export default {
   components: {
@@ -131,6 +132,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions([LOGIN]),
     handleSubmit() {
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
@@ -143,8 +145,8 @@ export default {
     },
     submitData() {
       this.loading = true;
-      AuthService.login(this.form)
-        .then(({ data: { result, message } }) => {
+      this[LOGIN](this.form)
+        .then(({ result, message }) => {
           if (message == "OK") {
             this.$message.success("Login Successfull");
             this.$router.push({ name: MAIN_PAGE });
