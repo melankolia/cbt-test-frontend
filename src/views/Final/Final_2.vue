@@ -16,7 +16,7 @@
         Latihan CBT ini
       </p>
       <p class="font-airbnb text-base text-white leading-snug my-4">
-        Email : maryatunpsik@gmail
+        Email : maryatunpsik@gmail.com
       </p>
     </div>
     <div class="w-full px-8">

@@ -104,8 +104,10 @@
 
 <script>
 const ModalResult = () => import("@/components/Modal/general");
+import QuizService from "@/services/resources/quiz.service";
 import { Button } from "ant-design-vue";
 import { PRACTICES_CBT } from "@/router/name.types";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -122,6 +124,9 @@ export default {
       loading: false,
     };
   },
+  computed: {
+    ...mapGetters(["getUser"]),
+  },
   methods: {
     handleOk() {
       this.loadingOk = true;
@@ -132,11 +137,42 @@ export default {
       }, 1000);
     },
     handleSubmit() {
-      this.loading = true;
+      const payload = {
+        id_user: this.getUser.id,
+        step_11: this?.questions[2].answer,
+        step_12: this?.questions[3].answer,
+        step_13: this?.questions[4].answer,
+        step_14: this?.questions[5].answer,
+        step_15: this?.questions[6].answer,
+        step_16: this?.questions[7].answer,
+        step_17: this?.questions[8].answer,
+        step_18: this?.questions[9].answer,
+        step_19: this?.questions[10].answer,
+        step_20: this?.questions[11].answer,
+      };
+      this.submit(payload);
       setTimeout(() => {
-        this.visible = true;
         this.loading = false;
       }, 2000);
+    },
+    submit(payload) {
+      this.loading = true;
+      QuizService.createDataCBTMainSection(payload)
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            this.$message.success("Data anda berhasil diinput");
+            this.visible = true;
+          } else {
+            this.$message.error(result || "Data anda gagal diinput", 2.5);
+          }
+        })
+        .catch((err) => {
+          this.$message.error(
+            err?.response?.data?.result || "Data anda gagal diinput",
+            2.5
+          );
+        })
+        .finally(() => (this.loading = false));
     },
   },
 };

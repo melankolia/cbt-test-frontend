@@ -67,8 +67,9 @@
 
 <script>
 const FootlessModal = () => import("@/components/Modal/footless");
+import QuizService from "@/services/resources/quiz.service";
 import { Button } from "ant-design-vue";
-import { mapMutations } from "vuex";
+import { mapMutations, mapGetters } from "vuex";
 import { SET_FINAL_ANSWER } from "@/store/constants/mutations.type";
 import { FINAL_SCREEN } from "@/router/name.types";
 import {
@@ -136,6 +137,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["getUser"]),
     disabledPrev() {
       return this.question.no === 0;
     },
@@ -153,13 +155,38 @@ export default {
     ...mapMutations([SET_FINAL_ANSWER]),
     handleNext() {
       if (this.submitNext) {
-        this.loading = true;
-        return setTimeout(() => {
-          this.visible = true;
-          this.loading = false;
-        }, 1500);
+        const payload = {
+          id_user: this.getUser.id,
+          step_21: this?.questions[0].answer,
+          step_22: this?.questions[1].answer,
+          step_23: this?.questions[2].answer,
+          step_24: this?.questions[3].answer,
+          step_25: this?.questions[4].answer,
+          step_26: this?.questions[5].answer,
+        };
+        this.submit(payload);
+      } else {
+        this.question = this.questions[this.question.no + 1];
       }
-      this.question = this.questions[this.question.no + 1];
+    },
+    submit(payload) {
+      this.loading = true;
+      QuizService.createDataCBTPracticeSection(payload)
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            this.$message.success("Data anda berhasil diinput");
+            this.visible = true;
+          } else {
+            this.$message.error(result || "Data anda gagal diinput", 2.5);
+          }
+        })
+        .catch((err) => {
+          this.$message.error(
+            err?.response?.data?.result || "Data anda gagal diinput",
+            2.5
+          );
+        })
+        .finally(() => (this.loading = false));
     },
     handlePrev() {
       this.question = this.questions[this.question.no - 1];

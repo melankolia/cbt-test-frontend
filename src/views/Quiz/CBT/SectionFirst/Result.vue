@@ -62,6 +62,7 @@
 
 <script>
 const ModalResult = () => import("@/components/Modal/general");
+import QuizService from "@/services/resources/quiz.service";
 import { Button } from "ant-design-vue";
 import { MAIN_CBT } from "@/router/name.types";
 import { mapGetters } from "vuex";
@@ -83,7 +84,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getAnswerQ5", "getDistortions"]),
+    ...mapGetters(["getAnswerQ5", "getDistortions", "getUser"]),
     distortions() {
       const filtered = [];
       this.getAnswerQ5.forEach((e) => {
@@ -102,17 +103,43 @@ export default {
     handleOk() {
       this.loadingOk = true;
       setTimeout(() => {
-        this.$router.push({ name: MAIN_CBT });
         this.visible = false;
         this.loadingOk = false;
+        this.$router.push({ name: MAIN_CBT });
       }, 1000);
     },
     handleSubmit() {
+      const payload = {
+        id_user: this.getUser.id,
+        situasi: this?.questions[0].answer,
+        pikiran: this.result,
+        distorsi_pikiran: this.distortions,
+        perasaan: this?.questions[6].answer,
+        tingkat_perasaan: this?.questions[7].answer,
+        perilaku: this?.questions[8].answer,
+        konsekuensi: this?.questions[9].answer,
+        paling_mengganggu: this?.questions[10].answer,
+      };
+      this.submit(payload);
+    },
+    submit(payload) {
       this.loading = true;
-      setTimeout(() => {
-        this.visible = true;
-        this.loading = false;
-      }, 2000);
+      QuizService.createDataCBTFirstSection(payload)
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            this.$message.success("Data anda berhasil diinput");
+            this.visible = true;
+          } else {
+            this.$message.error(result || "Data anda gagal diinput", 2.5);
+          }
+        })
+        .catch((err) => {
+          this.$message.error(
+            err?.response?.data?.result || "Data anda gagal diinput",
+            2.5
+          );
+        })
+        .finally(() => (this.loading = false));
     },
   },
   mounted() {
