@@ -12,10 +12,10 @@
         style="width: 100%"
       >
         <a-radio-button
-          v-for="choice in choices"
+          v-for="(choice, i) in choices"
           :style="radioStyle"
           :value="choice"
-          :key="choice"
+          :key="i"
           size="large"
           style="height: 40px"
           class="rounded"
