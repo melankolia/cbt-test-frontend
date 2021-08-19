@@ -61,6 +61,7 @@
         :handleCancel="handleCancel"
         :loading="loadingOk"
         :status="status"
+        :desc="description"
       />
     </div>
   </div>
@@ -251,6 +252,15 @@ export default {
       else if (this.total >= 75) return "berat";
       return "ringan";
     },
+    description() {
+      if (this.total <= 59)
+        return "Boleh ya /tidak latihan CBT namun tidak perlu ke terapis";
+      else if (this.total <= 74)
+        return "Perlu Latihan CBT boleh ya/tidak ke terapis";
+      else if (this.total >= 75)
+        return "Perlu Latihan CBT, dianjurkan ke terapis dan penatalaksanaan psikofarmaka";
+      return "";
+    },
   },
   methods: {
     handleBack() {
@@ -280,7 +290,7 @@ export default {
     },
     submitData() {
       this.loading = true;
-      QuizService.createDataAnsietas({
+      QuizService.createDataDepresi({
         id_user: this.getUser?.id || null,
         ...this.form,
       })
