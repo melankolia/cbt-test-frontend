@@ -23,18 +23,19 @@ const mutations = {
 };
 
 const actions = {
-  [LOGIN]({ commit }, payload) {
+  [LOGIN](context, payload) {
     return new Promise((resolve, reject) => {
       AuthService.login(payload)
         .then(({ data: { result, message } }) => {
           if (message == "OK") {
-            commit(SET_USER, result);
+            context.commit(SET_USER, result);
             resolve({ result, message });
           } else {
             reject({ result, message });
           }
         })
         .catch((err) => {
+          console.log("DISINI");
           reject(err);
         });
     });

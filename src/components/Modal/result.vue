@@ -30,22 +30,22 @@
         mx-auto
       "
       :class="{
-        'bg-green-500': status == 'rendah',
+        'bg-green-500': status == 'ringan',
         'bg-yellow-300': status == 'sedang',
-        'bg-red-600': status == 'tinggi',
+        'bg-red-600': status == 'berat',
       }"
     >
       <img
         width="128"
         src="@/assets/images/cloud/tinggi.png"
         alt="result-cloud"
-        v-if="status == 'tinggi'"
+        v-if="status == 'berat'"
       />
       <img
         width="128"
         src="@/assets/images/cloud/rendah.png"
         alt="result-cloud"
-        v-else-if="status == 'rendah'"
+        v-else-if="status == 'ringan'"
       />
       <img
         width="128"
