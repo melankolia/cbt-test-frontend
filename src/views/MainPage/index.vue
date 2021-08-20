@@ -90,6 +90,27 @@
           />
           <p class="font-airbnb-medium text-lg text-white m-0">Sesi CBT</p>
         </div>
+        <div
+          v-if="isAdmin"
+          class="
+            bg-primary
+            active:bg-white
+            rounded-lg
+            p-4
+            flex flex-row
+            items-center
+          "
+          @click="goToDashboard"
+        >
+          <img
+            class="mr-8"
+            width="32px"
+            height="32px"
+            src="@/assets/images/clipboard.png"
+            alt="clipboard"
+          />
+          <p class="font-airbnb-medium text-lg text-white m-0">Dashboard</p>
+        </div>
       </div>
     </div>
   </div>
@@ -97,7 +118,7 @@
 
 <script>
 // import { Avatar, Button } from "ant-design-vue";
-import { ANXIETY, DEPRESSION, FIRST_CBT } from "@/router/name.types";
+import { ANXIETY, DEPRESSION, FIRST_CBT, DASHBOARD } from "@/router/name.types";
 import { mapGetters } from "vuex";
 
 export default {
@@ -107,8 +128,14 @@ export default {
   // },
   computed: {
     ...mapGetters(["getUser"]),
+    isAdmin() {
+      return this.getUser.username == "Admin";
+    },
   },
   methods: {
+    goToDashboard() {
+      this.$router.push({ name: DASHBOARD });
+    },
     goToAnxiety() {
       this.$router.push({ name: ANXIETY });
     },

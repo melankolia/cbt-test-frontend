@@ -1,5 +1,5 @@
 import { initialUserState } from "../states";
-import { LOGIN } from "../constants/actions.type";
+import { LOGIN, FORCE_LOGOUT } from "../constants/actions.type";
 import { SET_USER, RESET_USER } from "../constants/mutations.type";
 import AuthService from "@/services/resources/auth.service";
 
@@ -11,11 +11,14 @@ const getters = {
   getUser(state) {
     return state.user;
   },
+  isAuthenticated(state) {
+    return state.user.isAuthenticated;
+  },
 };
 
 const mutations = {
   [SET_USER](state, payload) {
-    state.user = { ...payload };
+    state.user = { ...payload, isAuthenticated: true };
   },
   [RESET_USER](state) {
     Object.assign(state.user, initialUserState());
@@ -35,10 +38,12 @@ const actions = {
           }
         })
         .catch((err) => {
-          console.log("DISINI");
           reject(err);
         });
     });
+  },
+  [FORCE_LOGOUT](context) {
+    context.commit(RESET_USER);
   },
 };
 

@@ -1,6 +1,8 @@
 const Container = () => import("../container");
-const Home = () => import("../views/Home");
-const About = () => import("../views/About");
+// const Home = () => import("../views/Home");
+const Dashboard = () => import("../views/Dashboard");
+const Detail = () => import("../views/Dashboard/Detail");
+// const About = () => import("../views/About");
 const LandingPage = () => import("../views/LandingPage");
 const Login = () => import("../views/Login");
 const Register = () => import("../views/Register");
@@ -13,8 +15,10 @@ const PracticesCBT = () => import("../views/Quiz/CBT/SectionPractice");
 const FinalScreen = () => import("../views/Final/index.vue");
 
 import {
-  HOME,
-  ABOUT,
+  // HOME,?
+  DASHBOARD,
+  DASHBOARD_DETAIL,
+  // ABOUT,
   LANDING_PAGE,
   LOGIN,
   REGISTER,
@@ -39,13 +43,19 @@ export const configRoutes = [
     children: [
       {
         path: "",
-        name: HOME,
-        component: Home,
+        name: DASHBOARD,
+        component: Dashboard,
+        meta: {
+          requiresAuth: true,
+        },
       },
       {
-        path: "about",
-        name: ABOUT,
-        component: About,
+        path: ":secureId",
+        name: DASHBOARD_DETAIL,
+        component: Detail,
+        meta: {
+          requiresAuth: true,
+        },
       },
     ],
   },
@@ -53,16 +63,25 @@ export const configRoutes = [
     path: "/home",
     name: MAIN_PAGE,
     component: MainPage,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: "/anxiety",
     name: ANXIETY,
     component: Anxiety,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: "/depression",
     name: DEPRESSION,
     component: Depression,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: "/cbt",
@@ -76,16 +95,25 @@ export const configRoutes = [
         path: "",
         name: FIRST_CBT,
         component: FirstCBT,
+        meta: {
+          requiresAuth: true,
+        },
       },
       {
         path: "main",
         name: MAIN_CBT,
         component: MainCBT,
+        meta: {
+          requiresAuth: true,
+        },
       },
       {
         path: "practices",
         name: PRACTICES_CBT,
         component: PracticesCBT,
+        meta: {
+          requiresAuth: true,
+        },
       },
     ],
   },
@@ -93,6 +121,9 @@ export const configRoutes = [
     path: "/final",
     name: FINAL_SCREEN,
     component: FinalScreen,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: "/login",

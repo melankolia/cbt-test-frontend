@@ -4,6 +4,7 @@ const users = `users`;
 export const USERS = {
   REGISTER: `${users}`,
   LOGIN: `${users}/login`,
+  BROWSE: `${users}`,
 };
 
 export const DEPRESI = `depresi`;

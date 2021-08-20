@@ -4,4 +4,5 @@ export const initialUserState = () => ({
   username: null,
   updatedAt: null,
   createdAt: null,
+  isAuthenticated: false,
 });
