@@ -34,12 +34,8 @@
       </p>
       <a-card hoverable style="padding: 1rem 0">
         <a-form-model ref="ruleForm" :model="form" :rules="rules">
-          <a-form-model-item prop="fullname">
-            <a-input
-              v-model="form.fullname"
-              size="large"
-              placeholder="Full Name"
-            >
+          <a-form-model-item prop="name">
+            <a-input v-model="form.name" size="large" placeholder="Full Name">
               <a-icon
                 slot="prefix"
                 type="user"
@@ -96,6 +92,7 @@
 <script>
 import { Card, FormModel, Input, Icon, Button } from "ant-design-vue";
 import { MAIN_PAGE } from "@/router/name.types";
+import AuthService from "@/services/resources/auth.service";
 
 export default {
   components: {
@@ -110,12 +107,12 @@ export default {
   data() {
     return {
       form: {
-        fullname: "",
+        name: "",
         username: "",
         password: "",
       },
       rules: {
-        fullname: {
+        name: {
           required: true,
           message: "Please input your fullname",
           trigger: "change",
@@ -138,16 +135,36 @@ export default {
     handleRegister() {
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
-          this.loading = true;
-          setTimeout(() => {
-            this.$router.push({ name: MAIN_PAGE });
-            this.loading = false;
-          }, 1000);
+          this.submitData();
         } else {
           console.log("error submit!!");
           return false;
         }
       });
+    },
+    submitData() {
+      this.loading = true;
+      AuthService.register(this.form)
+        .then(({ data: { result, message } }) => {
+          if (message == "OK") {
+            this.$message.success("Register Successfull");
+            this.$router.push({ name: MAIN_PAGE });
+          } else {
+            this.$message.error(
+              result || "Register Failed, Please try again later !",
+              2.5
+            );
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          this.$message.error(
+            err?.response?.data?.result ||
+              "Register Failed, Please try again later !",
+            2.5
+          );
+        })
+        .finally(() => (this.loading = false));
     },
   },
 };

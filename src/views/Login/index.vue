@@ -95,6 +95,8 @@
 <script>
 import { Card, FormModel, Input, Icon, Button, Divider } from "ant-design-vue";
 import { REGISTER, MAIN_PAGE } from "@/router/name.types";
+import { mapActions } from "vuex";
+import { LOGIN } from "@/store/constants/actions.type";
 
 export default {
   components: {
@@ -130,15 +132,38 @@ export default {
     };
   },
   methods: {
+    ...mapActions([LOGIN]),
     handleSubmit() {
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
-          this.$router.push({ name: MAIN_PAGE });
+          this.submitData();
         } else {
-          console.log("error submit!!");
+          this.$message.error("error submit!!", 2.5);
           return false;
         }
       });
+    },
+    submitData() {
+      this.loading = true;
+      this[LOGIN](this.form)
+        .then(({ result, message }) => {
+          if (message == "OK") {
+            this.$message.success("Login Successfull");
+            this.$router.push({ name: MAIN_PAGE });
+          } else {
+            this.$message.error(
+              result || "Login Failed, Please try again later !",
+              2.5
+            );
+          }
+        })
+        .catch((err) => {
+          this.$message.error(
+            err?.response?.data?.result || "Login Failed, Please try again !",
+            2.5
+          );
+        })
+        .finally(() => (this.loading = false));
     },
     handleRegister() {
       this.loadingRegister = true;

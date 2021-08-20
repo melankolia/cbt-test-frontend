@@ -34,11 +34,7 @@
                 <p class="font-airbnb mb-1">
                   {{ question }}
                 </p>
-                <a-select
-                  v-model="form[`q${index + 1}`]"
-                  style="width: 100%"
-                  @change="handleChange"
-                >
+                <a-select v-model="form[`q${index + 1}`]" style="width: 100%">
                   <a-select-option v-for="item in answerList" :key="item.value">
                     <span class="font-airbnb-medium text-sm">{{
                       item.desc
@@ -64,7 +60,8 @@
         :handleOk="handleOk"
         :handleCancel="handleCancel"
         :loading="loadingOk"
-        :status="result.status"
+        :status="status"
+        :desc="description"
       />
     </div>
   </div>
@@ -74,6 +71,8 @@
 import { Button, FormModel, Select, Icon } from "ant-design-vue";
 import ModalResult from "@/components/Modal/result";
 import { MAIN_PAGE, FIRST_CBT } from "@/router/name.types";
+import QuizService from "@/services/resources/quiz.service";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -87,12 +86,10 @@ export default {
   },
   data() {
     return {
-      result: {
-        status: "tinggi",
-      },
       loading: false,
       loadingOk: false,
       visible: false,
+      total: 0,
       questions: [
         "1. Saya merasa lebih gelisah atau gugup dan cemas dari biasanya.",
         "2. Saya merasa takut tanpa alasan yang jelas.",
@@ -116,32 +113,32 @@ export default {
         "20. Saya mengalami mimpi-mimpi buruk.",
       ],
       answerList: [
-        { value: 0, desc: "0. Tidak Pernah" },
-        { value: 1, desc: "1. Kadang-Kadang" },
-        { value: 2, desc: "2. Sering" },
-        { value: 3, desc: "3. Selalu" },
+        { value: 0, desc: "Tidak Pernah" },
+        { value: 1, desc: "Kadang-Kadang" },
+        { value: 2, desc: "Sering" },
+        { value: 3, desc: "Selalu" },
       ],
       form: {
-        q1: "",
-        q2: "",
-        q3: "",
-        q4: "",
-        q5: "",
-        q6: "",
-        q7: "",
-        q8: "",
-        q9: "",
-        q10: "",
-        q11: "",
-        q12: "",
-        q13: "",
-        q14: "",
-        q15: "",
-        q16: "",
-        q17: "",
-        q18: "",
-        q19: "",
-        q20: "",
+        q1: null,
+        q2: null,
+        q3: null,
+        q4: null,
+        q5: null,
+        q6: null,
+        q7: null,
+        q8: null,
+        q9: null,
+        q10: null,
+        q11: null,
+        q12: null,
+        q13: null,
+        q14: null,
+        q15: null,
+        q16: null,
+        q17: null,
+        q18: null,
+        q19: null,
+        q20: null,
       },
       rules: {
         q1: {
@@ -247,12 +244,27 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters(["getUser"]),
+    status() {
+      if (this.total <= 59) return "ringan";
+      else if (this.total <= 74) return "sedang";
+      else if (this.total >= 75) return "berat";
+      return "ringan";
+    },
+    description() {
+      if (this.total <= 59)
+        return "Boleh ya /tidak latihan CBT namun tidak perlu ke terapis";
+      else if (this.total <= 74)
+        return "Perlu Latihan CBT boleh ya/tidak ke terapis";
+      else if (this.total >= 75)
+        return "Perlu Latihan CBT, dianjurkan ke terapis dan penatalaksanaan psikofarmaka";
+      return "";
+    },
+  },
   methods: {
     handleBack() {
       this.$router.replace({ name: MAIN_PAGE });
-    },
-    handleChange(e) {
-      console.log(e);
     },
     handleCancel() {
       this.visible = false;
@@ -266,19 +278,40 @@ export default {
       }, 1000);
     },
     handleSubmit() {
-      this.loading = true;
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
-          setTimeout(() => {
-            this.loading = false;
-            this.visible = true;
-          }, 1000);
+          this.submitData();
         } else {
           setTimeout(() => {
             this.loading = false;
           }, 1000);
         }
       });
+    },
+    submitData() {
+      this.loading = true;
+      QuizService.createDataDepresi({
+        id_user: this.getUser?.id || null,
+        ...this.form,
+      })
+        .then(({ data: { message, result } }) => {
+          if (message == "OK") {
+            this.$message.success("Data anda berhasil diinput");
+            this.total = Object.values(this.form).reduce(
+              (acc, value) => acc + value
+            );
+            this.visible = true;
+          } else {
+            this.$message.error(result || "Data anda gagal diinput", 2.5);
+          }
+        })
+        .catch((err) => {
+          this.$message.error(
+            err?.response?.data?.result || "Data anda gagal diinput",
+            2.5
+          );
+        })
+        .finally(() => (this.loading = false));
     },
   },
 };

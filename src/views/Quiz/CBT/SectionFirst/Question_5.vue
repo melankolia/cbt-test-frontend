@@ -5,7 +5,6 @@
       Check list pikiran distorsi (keliru) dibawah ini sesuai dengan isi pikiran
       negatif yang telah anda tuliskan diawal <br />
       (Pemikiran yang keliru)
-      {{ data.answer }}
     </p>
     <div class="text-left border border-gray-300 rounded-xl space-y-2 p-2">
       <div
