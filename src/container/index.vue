@@ -23,25 +23,18 @@
           minHeight: '280px',
         }"
       >
-        <div id="nav">
-          <router-link to="/">Home</router-link> |
-          <router-link to="/about">About</router-link>
-          <router-view />
-        </div>
-        <Table />
+        <router-view />
       </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
 <script>
 const SideBar = () => import("./Sidebar");
-const Table = () => import("../components/Table.vue");
 import { Layout, Icon } from "ant-design-vue";
 
 export default {
   components: {
     SideBar,
-    Table,
     "a-layout": Layout,
     "a-layout-header": Layout.Header,
     "a-icon": Icon,

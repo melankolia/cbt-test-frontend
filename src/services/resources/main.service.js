@@ -1,9 +1,12 @@
 import MainInstance from "../main.instance";
-import { HOME } from "../constants";
+import { USERS } from "../constants";
 
 const MainService = {
   getList(params) {
-    return MainInstance.query(HOME, { params });
+    return MainInstance.query(USERS.BROWSE, { params });
+  },
+  getDetail(id) {
+    return MainInstance.fetch(USERS.BROWSE, id);
   },
 };
 
