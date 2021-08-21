@@ -73,7 +73,7 @@
 <script>
 import { Button, FormModel, Select, Icon } from "ant-design-vue";
 import ModalResult from "@/components/Modal/result";
-import { MAIN_PAGE } from "@/router/name.types";
+import { MAIN_PAGE, FIRST_CBT } from "@/router/name.types";
 import QuizService from "@/services/resources/quiz.service";
 import { mapGetters } from "vuex";
 
@@ -198,8 +198,8 @@ export default {
     handleBack() {
       this.$router.replace({ name: MAIN_PAGE });
     },
-    handleChange(e) {
-      console.log(e);
+    handleChange() {
+      // console.log(e);
     },
     handleCancel() {
       this.visible = false;
@@ -209,13 +209,12 @@ export default {
       setTimeout(() => {
         this.loadingOk = false;
         this.visible = false;
-        // this.$router.replace({ name: FIRST_CBT });
+        this.$router.replace({ name: FIRST_CBT });
       }, 1000);
     },
     handleSubmit() {
       this.loading = true;
       this.$refs.ruleForm.validate((valid) => {
-        console.log(this.form);
         if (valid) {
           this.submitData();
         } else {
