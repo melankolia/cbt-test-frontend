@@ -113,10 +113,10 @@ export default {
         "20. Saya mengalami mimpi-mimpi buruk.",
       ],
       answerList: [
-        { value: 0, desc: "Tidak Pernah" },
-        { value: 1, desc: "Kadang-Kadang" },
-        { value: 2, desc: "Sering" },
-        { value: 3, desc: "Selalu" },
+        { value: 0, desc: "0. Tidak Pernah" },
+        { value: 1, desc: "1. Kadang-Kadang" },
+        { value: 2, desc: "2. Sering" },
+        { value: 3, desc: "3. Selalu" },
       ],
       form: {
         q1: null,
