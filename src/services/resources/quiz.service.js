@@ -1,9 +1,9 @@
 import MainInstance from "../main.instance";
-import { DEPRESI, CBT } from "../constants";
+import { ANSIETAS, DEPRESI, CBT } from "../constants";
 
 const QuizService = {
   createDataAnsietas(data) {
-    return MainInstance.post(DEPRESI, data);
+    return MainInstance.post(ANSIETAS, data);
   },
   createDataDepresi(data) {
     return MainInstance.post(DEPRESI, data);
