@@ -10,12 +10,12 @@
       <a-descriptions-item label="Username" :span="3">
         {{ detail.username || "-" }}
       </a-descriptions-item>
-      <a-descriptions-item label="Ansietas" :span="3">
+      <a-descriptions-item label="Depresi" :span="3">
         <a-collapse v-model="expandAnxiety" expand-icon-position="right">
-          <a-collapse-panel key="1" header="Tabel Ansietas">
+          <a-collapse-panel key="1" header="Tabel Depresi">
             <a-descriptions bordered>
               <a-descriptions-item
-                v-for="(e, i, index) in detail.Ansieta"
+                v-for="(e, i, index) in detail.Depresi"
                 :key="i"
                 :label="`Question ${index + 1}`"
                 :span="3"
@@ -28,15 +28,15 @@
           </a-collapse-panel>
         </a-collapse>
       </a-descriptions-item>
-      <a-descriptions-item label="Total Nilai Ansietas" :span="3">
-        {{ detail.totalAnsietas || "-" }}
+      <a-descriptions-item label="Total Nilai Depresi" :span="3">
+        {{ detail.totalDepresi || "-" }}
       </a-descriptions-item>
-      <a-descriptions-item label="Depresi" :span="3">
+      <a-descriptions-item label="Ansietas" :span="3">
         <a-collapse v-model="expandDepresi" expand-icon-position="right">
-          <a-collapse-panel key="1" header="Tabel Depresi">
+          <a-collapse-panel key="1" header="Tabel Ansietas">
             <a-descriptions bordered>
               <a-descriptions-item
-                v-for="(e, i, index) in detail.Depresi"
+                v-for="(e, i, index) in detail.Ansieta"
                 :key="i"
                 :label="`Question ${index + 1}`"
                 :span="3"
@@ -49,8 +49,8 @@
           </a-collapse-panel>
         </a-collapse>
       </a-descriptions-item>
-      <a-descriptions-item label="Total Nilai Depresi" :span="3">
-        {{ detail.totalDepresi || "-" }}
+      <a-descriptions-item label="Total Nilai Ansietas" :span="3">
+        {{ detail.totalAnsietas || "-" }}
       </a-descriptions-item>
       <a-descriptions-item label="CBT" :span="3">
         <a-collapse v-model="expandCBT" expand-icon-position="right">
@@ -331,7 +331,7 @@ export default {
       MainService.getDetail(this.id)
         .then(({ data: { result, message } }) => {
           if (message == "OK") {
-            this.detail = { ...this.detail, ...result };
+            this.detail = { ...result };
           } else {
             this.$message.error(result || "Gagal memuat data responden", 2.5);
           }
@@ -341,31 +341,31 @@ export default {
     },
     convertDescAnx(arg) {
       if (!arg) return "Tidak Pernah";
-      else if (arg == 1) return "Tidak pernah";
-      else if (arg == 2) return "Kadang-kadang";
-      else if (arg == 3) return "Sering";
-      else if (arg == 4) return "Selalu";
+      else if (arg == 0) return "Tidak pernah";
+      else if (arg == 1) return "Kadang-kadang";
+      else if (arg == 2) return "Sering";
+      else if (arg == 3) return "Selalu";
     },
     checkColorAnx(arg) {
-      if (!arg) return "green";
-      else if (arg == 1) return "green";
-      else if (arg == 2) return "orange";
-      else if (arg == 3) return "pink";
-      else if (arg == 4) return "red";
-    },
-    checkColorDep(arg) {
       if (!arg) return "green";
       else if (arg == 0) return "green";
       else if (arg == 1) return "orange";
       else if (arg == 2) return "pink";
       else if (arg == 3) return "red";
     },
+    checkColorDep(arg) {
+      if (!arg) return "green";
+      else if (arg == 1) return "green";
+      else if (arg == 2) return "orange";
+      else if (arg == 3) return "pink";
+      else if (arg == 4) return "red";
+    },
     convertDescDep(arg) {
       if (!arg) return "Tidak Pernah";
-      else if (arg == 0) return "Tidak pernah";
-      else if (arg == 1) return "Kadang-kadang";
-      else if (arg == 2) return "Sering";
-      else if (arg == 3) return "Selalu";
+      else if (arg == 1) return "Tidak pernah";
+      else if (arg == 2) return "Kadang-kadang";
+      else if (arg == 3) return "Sering";
+      else if (arg == 4) return "Selalu";
     },
   },
   mounted() {

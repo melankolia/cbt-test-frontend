@@ -116,6 +116,9 @@ export default {
     current(val) {
       val > 0 && this.getList();
     },
+    search() {
+      this.getList();
+    },
   },
   mounted() {
     this.getList();

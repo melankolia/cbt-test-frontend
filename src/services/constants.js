@@ -6,7 +6,7 @@ export const USERS = {
   LOGIN: `${users}/login`,
   BROWSE: `${users}`,
 };
-
+export const ANSIETAS = `ansietas`;
 export const DEPRESI = `depresi`;
 const cbt = `cbt`;
 export const CBT = {

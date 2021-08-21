@@ -6,7 +6,7 @@
       icon="left"
       @click="handleBack"
     />
-    <div class="min-h-screen px-6 py-8 flex flex-col justify-center">
+    <div class="min-h-screen px-6 pb-8 pt-24 flex flex-col justify-center">
       <a-form-model ref="ruleForm" :model="form" :rules="rules">
         <div class="bg-white rounded-xl p-6">
           <p class="font-airbnb-medium text-base mb-0 text-center">
@@ -57,16 +57,16 @@
           </a-button>
         </div>
       </a-form-model>
+      <ModalResult
+        title="Hasil Tingkat Tingkatan Ansietas"
+        :visible="visible"
+        :handleOk="handleOk"
+        :handleCancel="handleCancel"
+        :loading="loadingOk"
+        :status="status"
+        :desc="description"
+      />
     </div>
-    <ModalResult
-      title="Hasil Tingkat Tingkatan Ansietas"
-      :visible="visible"
-      :handleOk="handleOk"
-      :handleCancel="handleCancel"
-      :loading="loadingOk"
-      :status="status"
-      :desc="description"
-    />
   </div>
 </template>
 
@@ -79,9 +79,9 @@ import { mapGetters } from "vuex";
 
 export default {
   components: {
+    "a-button": Button,
     "a-form-model": FormModel,
     "a-form-model-item": FormModel.Item,
-    "a-button": Button,
     "a-select": Select,
     "a-select-option": Select.Option,
     "a-icon": Icon,
@@ -94,15 +94,26 @@ export default {
       visible: false,
       total: 0,
       questions: [
-        "1. Kurang tertarik atau bergairah dalam melakukan apapun.",
-        "2. Merasa murung, muram atau putus asa.",
-        "3. Sulit tidur atau mudah terbangun atau terlalu banyak tidur.",
-        "4. Merasa Lelah atau kurang bertenaga.",
-        "5. Kurang nafsu makan atau makan terlalu banyak.",
-        "6. Kurang percaya diri atau merasa bahwa anda orang yang gagal.",
-        "7. Sulit berkonsentrasi pada sesuatu contohnya  membaca koran.",
-        "8. Bergerak atau berbicara sangat lambat sehingga orang lain memperhatikan atau mengabaikannya.",
-        "9. Merasa lebih baik mati atau melukai diri sendiri dengan cara apapun.",
+        "1. Saya merasa lebih gelisah atau gugup dan cemas dari biasanya.",
+        "2. Saya merasa takut tanpa alasan yang jelas.",
+        "3. Saya merasa seakan tubuh saya berantakan atau hancur.",
+        "4. Saya mudah marah, tersinggung atau panic.",
+        "5. Saya selalu merasa kesulitan mengerjakan segala sesuatu atau merasa sesuatu yang jelek akan terjadi.",
+        "6. Kedua tangan dan kaki saya sering gemetar.",
+        "7. Saya sering terganggu oleh sakit kepala, nyeri leher atau nyeri otot.",
+        "8. Saya merasa badan saya lemah dan mudah lelah.",
+        "9. Saya tidak dapat istirahat atau duduk dengan tenang.",
+        "10. Saya merasa jantung saya berdebar-debar dengan keras dan cepat.",
+        "11. Saya sering mengalami pusing.",
+        "12. Saya sering pingsan atau merasa seperti pingsan.",
+        "13. Saya mudah sesak napas tersengal-sengal.",
+        "14. Saya merasa kaku atau mati rasa dan kesemutan pada jari-jari saya.",
+        "15. Saya merasa sakit perut atau gangguan pencernaan.",
+        "16. Saya sering kencing daripada biasanya.",
+        "17. Saya merasa tangan saya dingin dan sering basah oleh keringat.",
+        "18. Wajah saya terasa panas dan kemerahan.",
+        "19. Saya sulit tidur dan tidak dapat istirahat malam.",
+        "20. Saya mengalami mimpi-mimpi buruk.",
       ],
       answerList: [
         { value: 1, desc: "1. Tidak Pernah" },
@@ -120,6 +131,17 @@ export default {
         q7: null,
         q8: null,
         q9: null,
+        q10: null,
+        q11: null,
+        q12: null,
+        q13: null,
+        q14: null,
+        q15: null,
+        q16: null,
+        q17: null,
+        q18: null,
+        q19: null,
+        q20: null,
       },
       rules: {
         q1: {
@@ -167,39 +189,85 @@ export default {
           message: "Please input this field",
           trigger: "change",
         },
-      },
-      result: {
-        total: 1,
-        status: "rendah",
+        q10: {
+          required: true,
+          message: "Please input this field",
+          trigger: "change",
+        },
+        q11: {
+          required: true,
+          message: "Please input this field",
+          trigger: "change",
+        },
+        q12: {
+          required: true,
+          message: "Please input this field",
+          trigger: "change",
+        },
+        q13: {
+          required: true,
+          message: "Please input this field",
+          trigger: "change",
+        },
+        q14: {
+          required: true,
+          message: "Please input this field",
+          trigger: "change",
+        },
+        q15: {
+          required: true,
+          message: "Please input this field",
+          trigger: "change",
+        },
+        q16: {
+          required: true,
+          message: "Please input this field",
+          trigger: "change",
+        },
+        q17: {
+          required: true,
+          message: "Please input this field",
+          trigger: "change",
+        },
+        q18: {
+          required: true,
+          message: "Please input this field",
+          trigger: "change",
+        },
+        q19: {
+          required: true,
+          message: "Please input this field",
+          trigger: "change",
+        },
+        q20: {
+          required: true,
+          message: "Please input this field",
+          trigger: "change",
+        },
       },
     };
   },
   computed: {
     ...mapGetters(["getUser"]),
     status() {
-      if (this.total <= 9) return "ringan";
-      else if (this.total <= 14) return "sedang";
-      else if (this.total >= 19) return "berat";
+      if (this.total <= 59) return "ringan";
+      else if (this.total <= 74) return "sedang";
+      else if (this.total >= 75) return "berat";
       return "ringan";
     },
     description() {
-      if (this.total <= 4)
+      if (this.total <= 59)
         return "Boleh ya /tidak latihan CBT namun tidak perlu ke terapis";
-      else if (this.total <= 9)
-        return "Perlu Latihan CBT namun tidak perlu ke terapis";
-      else if (this.total <= 14)
-        return "Perlu Latihan CBT dan dianjurkan ke terapis";
-      else if (this.total >= 19)
-        return "Perlu terapis dan penataksanaan psikofarmaka";
+      else if (this.total <= 74)
+        return "Perlu Latihan CBT boleh ya/tidak ke terapis";
+      else if (this.total >= 75)
+        return "Perlu Latihan CBT, dianjurkan ke terapis dan penatalaksanaan psikofarmaka";
       return "";
     },
   },
   methods: {
     handleBack() {
       this.$router.replace({ name: MAIN_PAGE });
-    },
-    handleChange() {
-      // console.log(e);
     },
     handleCancel() {
       this.visible = false;
@@ -213,7 +281,6 @@ export default {
       }, 1000);
     },
     handleSubmit() {
-      this.loading = true;
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
           this.submitData();
@@ -255,6 +322,8 @@ export default {
 
 <style scoped>
 .button-back {
-  margin: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 </style>
