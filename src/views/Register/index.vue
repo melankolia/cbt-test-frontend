@@ -91,7 +91,7 @@
 
 <script>
 import { Card, FormModel, Input, Icon, Button } from "ant-design-vue";
-import { MAIN_PAGE } from "@/router/name.types";
+import { LOGIN } from "@/router/name.types";
 import AuthService from "@/services/resources/auth.service";
 
 export default {
@@ -148,7 +148,7 @@ export default {
         .then(({ data: { result, message } }) => {
           if (message == "OK") {
             this.$message.success("Register Successfull");
-            this.$router.push({ name: MAIN_PAGE });
+            this.$router.push({ name: LOGIN });
           } else {
             this.$message.error(
               result || "Register Failed, Please try again later !",
