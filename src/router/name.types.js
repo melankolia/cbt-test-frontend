@@ -2,6 +2,7 @@ export const HOME = `home`;
 export const DASHBOARD = `dashboard`;
 export const DASHBOARD_DETAIL = `${DASHBOARD}/detail`;
 export const ABOUT = `about`;
+export const SCREENING = `screening`;
 export const LOGIN = `login`;
 export const REGISTER = `register`;
 export const LANDING_PAGE = `landing-page`;

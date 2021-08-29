@@ -5,6 +5,7 @@ export const USERS = {
   REGISTER: `${users}`,
   LOGIN: `${users}/login`,
   BROWSE: `${users}`,
+  UPDATE_STATUS: `${users}/update`,
 };
 export const ANSIETAS = `ansietas`;
 export const DEPRESI = `depresi`;
