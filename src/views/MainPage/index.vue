@@ -37,59 +37,83 @@
             flex flex-row
             items-center
           "
-          @click="goToAnxiety"
+          @click="goToScreening"
         >
           <img
             class="mr-8"
             width="32pd"
             height="32px"
-            src="@/assets/images/anxiety.png"
-            alt="anxiety"
+            src="@/assets/images/health-book.png"
+            alt="screening"
           />
-          <p class="font-airbnb-medium text-lg text-white m-0">
-            Skala Ansietas
-          </p>
+          <p class="font-airbnb-medium text-lg text-white m-0">Screening</p>
         </div>
-        <div
-          class="
-            bg-primary
-            active:bg-white
-            rounded-lg
-            p-4
-            flex flex-row
-            items-center
-          "
-          @click="goToDepression"
-        >
-          <img
-            class="mr-8"
-            width="32pd"
-            height="32px"
-            src="@/assets/images/depression.png"
-            alt="anxiety"
-          />
-          <p class="font-airbnb-medium text-lg text-white m-0">Skala Depresi</p>
-        </div>
-        <div
-          class="
-            bg-primary
-            active:bg-white
-            rounded-lg
-            p-4
-            flex flex-row
-            items-center
-          "
-          @click="goToCBT"
-        >
-          <img
-            class="mr-8"
-            width="32px"
-            height="32px"
-            src="@/assets/images/clipboard.png"
-            alt="clipboard"
-          />
-          <p class="font-airbnb-medium text-lg text-white m-0">Sesi CBT</p>
-        </div>
+        <template v-if="isPsikososial">
+          <div
+            class="
+              bg-primary
+              active:bg-white
+              rounded-lg
+              p-4
+              flex flex-row
+              items-center
+            "
+            @click="goToAnxiety"
+          >
+            <img
+              class="mr-8"
+              width="32pd"
+              height="32px"
+              src="@/assets/images/anxiety.png"
+              alt="anxiety"
+            />
+            <p class="font-airbnb-medium text-lg text-white m-0">
+              Skala Ansietas
+            </p>
+          </div>
+          <div
+            class="
+              bg-primary
+              active:bg-white
+              rounded-lg
+              p-4
+              flex flex-row
+              items-center
+            "
+            @click="goToDepression"
+          >
+            <img
+              class="mr-8"
+              width="32pd"
+              height="32px"
+              src="@/assets/images/depression.png"
+              alt="anxiety"
+            />
+            <p class="font-airbnb-medium text-lg text-white m-0">
+              Skala Depresi
+            </p>
+          </div>
+          <div
+            class="
+              bg-primary
+              active:bg-white
+              rounded-lg
+              p-4
+              flex flex-row
+              items-center
+            "
+            @click="goToCBT"
+          >
+            <img
+              class="mr-8"
+              width="32px"
+              height="32px"
+              src="@/assets/images/clipboard.png"
+              alt="clipboard"
+            />
+            <p class="font-airbnb-medium text-lg text-white m-0">Sesi CBT</p>
+          </div>
+        </template>
         <div
           v-if="isAdmin"
           class="
@@ -118,7 +142,13 @@
 
 <script>
 // import { Avatar, Button } from "ant-design-vue";
-import { ANXIETY, DEPRESSION, FIRST_CBT, DASHBOARD } from "@/router/name.types";
+import {
+  ANXIETY,
+  DEPRESSION,
+  FIRST_CBT,
+  DASHBOARD,
+  SCREENING,
+} from "@/router/name.types";
 import { mapGetters } from "vuex";
 
 export default {
@@ -131,8 +161,20 @@ export default {
     isAdmin() {
       return this.getUser.username == "Admin";
     },
+    isSehat() {
+      return this.getUser.status == "sehat";
+    },
+    isPsikotik() {
+      return this.getUser.status == "gangguan psikotik";
+    },
+    isPsikososial() {
+      return this.getUser.status == "psikososial";
+    },
   },
   methods: {
+    goToScreening() {
+      this.$router.push({ name: SCREENING });
+    },
     goToDashboard() {
       this.$router.push({ name: DASHBOARD });
     },

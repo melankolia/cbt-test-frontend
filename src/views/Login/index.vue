@@ -94,7 +94,7 @@
 
 <script>
 import { Card, FormModel, Input, Icon, Button, Divider } from "ant-design-vue";
-import { REGISTER, MAIN_PAGE } from "@/router/name.types";
+import { REGISTER, MAIN_PAGE, SCREENING } from "@/router/name.types";
 import { mapActions } from "vuex";
 import { LOGIN } from "@/store/constants/actions.type";
 
@@ -149,7 +149,11 @@ export default {
         .then(({ result, message }) => {
           if (message == "OK") {
             this.$message.success("Login Successfull");
-            this.$router.push({ name: MAIN_PAGE });
+            if (result.firstLogin) {
+              this.$router.push({ name: SCREENING });
+            } else {
+              this.$router.push({ name: MAIN_PAGE });
+            }
           } else {
             this.$message.error(
               result || "Login Failed, Please try again later !",

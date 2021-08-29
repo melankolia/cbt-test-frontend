@@ -3,6 +3,7 @@ const Container = () => import("../container");
 const Dashboard = () => import("../views/Dashboard");
 const Detail = () => import("../views/Dashboard/Detail");
 // const About = () => import("../views/About");
+const Screening = () => import("../views/Screening");
 const LandingPage = () => import("../views/LandingPage");
 const Login = () => import("../views/Login");
 const Register = () => import("../views/Register");
@@ -19,6 +20,7 @@ import {
   DASHBOARD,
   DASHBOARD_DETAIL,
   // ABOUT,
+  SCREENING,
   LANDING_PAGE,
   LOGIN,
   REGISTER,
@@ -79,6 +81,14 @@ export const configRoutes = [
     path: "/depression",
     name: DEPRESSION,
     component: Depression,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/screening",
+    name: SCREENING,
+    component: Screening,
     meta: {
       requiresAuth: true,
     },

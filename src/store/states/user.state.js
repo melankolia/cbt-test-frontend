@@ -5,4 +5,5 @@ export const initialUserState = () => ({
   updatedAt: null,
   createdAt: null,
   isAuthenticated: false,
+  firstLogin: null,
 });
