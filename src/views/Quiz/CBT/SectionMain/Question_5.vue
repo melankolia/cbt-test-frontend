@@ -9,11 +9,11 @@
       Saya akan membantu Anda dengan mengajukan beberapa pertanyaan
     </p>
     <p class="font-airbnb-light text-justify mt-2 mb-4">
-      Apakah ada penjelasan lainnya untuk situasi atau pikiran tersebut?
+      Apakah ada penjelasan lainnya untuk situasi atau pikiran tersebut
     </p>
     <a-textarea
       v-model="data.answer"
-      placeholder="Contoh : saya merasa pikiran saya benar, karena teman saya juga mengalami hal yang sama, selain itu saya merasa tidak salah, karena saya tidak mengganggunya."
+      placeholder="Contoh : Saat itu saya sedang terburu buru pulang dari pasar. Saya melihat dirinya dengan jarak yg berjauhan diseberang jalan. Mungkin dia tidak melihat saya"
       :auto-size="{ minRows: 6 }"
     />
   </div>

@@ -2,13 +2,13 @@
   <div class="text-center my-4">
     <p class="font-airbnb-medium text-base mt-2 mb-4">Step 18</p>
     <p class="font-airbnb-light text-justify mt-2 mb-4">
-      Lihat kembali Latihan CBT yang sudah dikerjakan ,Tuliskan and ucapkan
+      Lihat kembali Latihan CBT yang sudah dikerjakan. Tuliskan dan ucapkan
       dengan lantang pikiran positif untuk menggantikan pikiran negatif
       tersebut.
     </p>
     <a-textarea
       v-model="data.answer"
-      placeholder="Contoh : saya orang yang bermanfaat.Saya tidak ceroboh. Saya berpikiran posiitf ke orang lain."
+      placeholder="Contoh : Saya adalah orang yang bermanfaat bagi keluarga. Saya dapat membantu pekerjaan rumah tangga. Saya bisa belajar berpikir positif ke orang lain."
       :auto-size="{ minRows: 6 }"
     />
   </div>

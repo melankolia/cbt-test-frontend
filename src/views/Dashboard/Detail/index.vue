@@ -110,14 +110,14 @@
               <a-descriptions-item
                 key="11"
                 :span="3"
-                label="Bukti atau pengalaman apa yang mendukung munculnya pikiran negatifmu ?"
+                label="Bukti atau pengalaman apa yang mendukung seringnya muncul pikiran negatifmu?"
               >
                 {{ detail.CBT_FirstSection && detail.CBT_MainSection.step_11 }}
               </a-descriptions-item>
               <a-descriptions-item
                 key="12"
                 :span="3"
-                label="Apa yang akan anda katakan ke teman dekatmu jika dia berpikir hal negative yang sama denganmu"
+                label="Apa yang akan anda katakan ke teman dekatmu jika dia berpikir hal negatif mengenai dirimu"
               >
                 {{ detail.CBT_FirstSection && detail.CBT_MainSection.step_12 }}
               </a-descriptions-item>
@@ -159,7 +159,7 @@
               <a-descriptions-item
                 key="18"
                 :span="3"
-                label="Lihat kembali Latihan CBT yang sudah dikerjakan, Tuliskan dan ucapkan dengan lantang pikiran positif untuk menggantikan pikiran negatif tersebut ?"
+                label="Lihat kembali Latihan CBT yang sudah dikerjakan. Tuliskan dan ucapkan dengan lantang pikiran positif untuk menggantikan pikiran negatif tersebut ?"
               >
                 {{ detail.CBT_FirstSection && detail.CBT_MainSection.step_18 }}
               </a-descriptions-item>

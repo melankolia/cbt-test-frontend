@@ -10,11 +10,11 @@
     </p>
     <p class="font-airbnb-light text-justify mt-2 mb-4">
       Apa yang akan anda katakan ke teman dekatmu jika dia berpikir hal negatif
-      yang sama denganmu
+      mengenai dirimu
     </p>
     <a-textarea
       v-model="data.answer"
-      placeholder="Contoh : saya senasib dengan dirimu, berarti dia memang benci sama saya dan kamu"
+      placeholder="Contoh : Saya tidak seperti yang kamu pikirkan. Anda keliru menilai diri saya."
       :auto-size="{ minRows: 6 }"
     />
   </div>

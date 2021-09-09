@@ -181,14 +181,14 @@ export default {
     },
     description() {
       if (this.total <= 4)
-        return "Boleh ya /tidak latihan CBT namun tidak perlu ke terapis";
+        return "Anda sebaiknya mengikuti latihan CBT, namun anda tidak perlu konsultasi ke terapis";
       else if (this.total <= 9)
         return "Perlu Latihan CBT namun tidak perlu ke terapis";
       else if (this.total <= 14)
         return "Perlu Latihan CBT dan dianjurkan ke terapis";
       else if (this.total >= 19)
-        return "Perlu terapis dan penataksanaan psikofarmaka";
-      return "Boleh ya /tidak latihan CBT namun tidak perlu ke terapis";
+        return " Anda harus mengikuti Latihan CBT dan Sangat dianjurkan konsultasi ke terapis";
+      return "Anda sebaiknya mengikuti latihan CBT, namun anda tidak perlu konsultasi ke terapis";
     },
   },
   methods: {

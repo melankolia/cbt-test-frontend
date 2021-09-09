@@ -14,7 +14,7 @@
     </p>
     <a-textarea
       v-model="data.answer"
-      placeholder="Contoh : saya harus tanya keorangnya langsung,tidak boleh menebak (suuzon)"
+      placeholder="Contoh : Saya yakin saya bisa berubah. Saya bisa minta pendapat dari pengalaman teman teman yang pernah berinteraksi dengan saya."
       :auto-size="{ minRows: 6 }"
     />
   </div>

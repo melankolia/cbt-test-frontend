@@ -14,7 +14,8 @@
       negative yang muncul
     </p>
     <p class="font-airbnb-bold text-justify my-2">
-      Bukti atau pengalaman apa yang mendukung munculnya pikiran negatifmu ?
+      Bukti atau pengalaman apa yang mendukung seringnya muncul pikiran
+      negatifmu?
     </p>
     <a-textarea
       v-model="data.answer"

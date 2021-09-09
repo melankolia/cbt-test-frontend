@@ -4,7 +4,8 @@
     <div class="text-left border border-gray-300 rounded-xl space-y-4 p-2 mb-4">
       <div>
         <p class="font-airbnb-medium">
-          Bukti atau pengalaman apa yang mendukung munculnya pikiran negatifmu ?
+          Bukti atau pengalaman apa yang mendukung seringnya muncul pikiran
+          negatifmu?
         </p>
         <p class="my-2 text-sm">{{ questions[2].answer || "-" }}</p>
         <hr />
@@ -59,7 +60,7 @@
       </div>
       <div>
         <p class="font-airbnb-medium">
-          Lihat kembali Latihan CBT yang sudah dikerjakan, Tuliskan dan ucapkan
+          Lihat kembali Latihan CBT yang sudah dikerjakan. Tuliskan dan ucapkan
           dengan lantang pikiran positif untuk menggantikan pikiran negatif
           tersebut.
         </p>

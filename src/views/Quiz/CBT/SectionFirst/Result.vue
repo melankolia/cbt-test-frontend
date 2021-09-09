@@ -53,7 +53,7 @@
         <p class="font-airbnb-medimum text-center text-xl mb-4">Anda Cerdas</p>
         <p class="font-airbnb text-lg text-center">
           Kejujuranmu adalah awal dari suatu pencapaian diri yang baik menuju
-          kebahagaiaan hidup
+          kebahagiaan hidup
         </p>
       </template>
     </ModalResult>

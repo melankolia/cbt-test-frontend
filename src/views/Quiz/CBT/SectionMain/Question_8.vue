@@ -10,12 +10,11 @@
     </p>
     <p class="font-airbnb-light text-justify mt-2 mb-4">
       Apakah ada bukti tambahan dari pengalaman positif yang pernah anda alami
-      untuk melawan dan mengubah pikiran negatif tersebut? <br />
-      Tuliskan!
+      untuk melawan dan mengubah pikiran negatif tersebut?
     </p>
     <a-textarea
       v-model="data.answer"
-      placeholder="Contoh : Gak benar jika saya ceroboh, kan saya sering  membantu pekerjaan rumah dan hasilya semua beres, piring tidak ada yang pecah.Saya bermanfaat."
+      placeholder="Contoh : Gak benar jika saya ceroboh, kan saya sering  membantu pekerjaan rumah dan hasilya semua beres, kamar menjadi bersih, rapi dan cucian piring selesai. Saya bermanfaat."
       :auto-size="{ minRows: 6 }"
     />
   </div>
