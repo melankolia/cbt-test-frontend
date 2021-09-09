@@ -11,7 +11,9 @@ const MainPage = () => import("../views/MainPage");
 const Anxiety = () => import("../views/Quiz/Anxiety");
 const Depression = () => import("../views/Quiz/Depression");
 const FirstCBT = () => import("../views/Quiz/CBT/SectionFirst");
+const FinalFirstCBT = () => import("../views/Quiz/CBT/SectionFirst/Final");
 const MainCBT = () => import("../views/Quiz/CBT/SectionMain");
+const FinalMainCBT = () => import("../views/Quiz/CBT/SectionMain/Final");
 const PracticesCBT = () => import("../views/Quiz/CBT/SectionPractice");
 const FinalScreen = () => import("../views/Final/index.vue");
 
@@ -28,7 +30,9 @@ import {
   ANXIETY,
   DEPRESSION,
   FIRST_CBT,
+  FINAL_FIRST_CBT,
   MAIN_CBT,
+  FINAL_MAIN_CBT,
   PRACTICES_CBT,
   FINAL_SCREEN,
 } from "./name.types";
@@ -121,6 +125,22 @@ export const configRoutes = [
         path: "practices",
         name: PRACTICES_CBT,
         component: PracticesCBT,
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: "final/first-cbt",
+        name: FINAL_FIRST_CBT,
+        component: FinalFirstCBT,
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: "final/main-cbt",
+        name: FINAL_MAIN_CBT,
+        component: FinalMainCBT,
         meta: {
           requiresAuth: true,
         },

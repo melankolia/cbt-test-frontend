@@ -2,7 +2,7 @@
   <div class="text-center my-4">
     <p class="font-airbnb-medium text-base my-2">Step 7</p>
     <p class="font-airbnb-light mt-2 mb-4">
-      Berapa tingkatan perasaan malu anda alami ?
+      Berapa tingkatan perasaan {{ feels }} yang anda alami ?
     </p>
     <div class="my-10">
       <a-slider
@@ -26,6 +26,12 @@ export default {
   },
   props: {
     data: { type: Object, required: true, default: () => {} },
+    questions: { type: Array, required: true, default: () => {} },
+  },
+  computed: {
+    feels() {
+      return this.questions[6].answer || "malu";
+    },
   },
 };
 </script>

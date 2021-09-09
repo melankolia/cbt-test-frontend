@@ -9,7 +9,8 @@
       Saya akan membantu Anda dengan mengajukan beberapa pertanyaan
     </p>
     <p class="font-airbnb-light text-justify mt-2 mb-4">
-      Apakah ada penjelasan lainnya untuk situasi atau pikiran tersebut
+      Apakah ada penjelasan lainnya untuk situasi atau pikiran tersebut?
+      {{ getStep11 }}
     </p>
     <a-textarea
       v-model="data.answer"
@@ -21,6 +22,7 @@
 
 <script>
 import { Input } from "ant-design-vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -28,6 +30,9 @@ export default {
   },
   props: {
     data: { type: Object, required: true, default: () => {} },
+  },
+  computed: {
+    ...mapGetters(["getStep11"]),
   },
 };
 </script>

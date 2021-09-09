@@ -71,3 +71,8 @@ export const initialDistortionState = () => ({
 export const initialAnswerQ5 = () => ({
   answer: [],
 });
+
+export const initialNeededAnswer = () => ({
+  step10: null,
+  step11: null,
+});

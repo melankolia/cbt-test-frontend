@@ -15,7 +15,7 @@
     </p>
     <p class="font-airbnb-bold text-justify my-2">
       Bukti atau pengalaman apa yang mendukung seringnya muncul pikiran
-      negatifmu?
+      negatifmu? {{ getStep10 }}
     </p>
     <a-textarea
       v-model="data.answer"
@@ -27,6 +27,8 @@
 
 <script>
 import { Input } from "ant-design-vue";
+import { mapGetters, mapMutations } from "vuex";
+import { SET_STEP_11 } from "@/store/constants/mutations.type";
 
 export default {
   components: {
@@ -34,6 +36,23 @@ export default {
   },
   props: {
     data: { type: Object, required: true, default: () => {} },
+  },
+  computed: {
+    ...mapGetters(["getStep10"]),
+  },
+  methods: {
+    ...mapMutations([SET_STEP_11]),
+    settingUpStep11(params) {
+      this[SET_STEP_11](params);
+    },
+  },
+  watch: {
+    "data.answer": {
+      handler(val) {
+        val && this.settingUpStep11(val);
+      },
+      deep: true,
+    },
   },
 };
 </script>

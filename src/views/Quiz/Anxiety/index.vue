@@ -257,7 +257,7 @@ export default {
     },
     description() {
       if (this.total <= 59)
-        return "Anda sebaiknya mengikuti latihan CBT,namun anda tidak perlu konsultasi ke terapis";
+        return "Anda sebaiknya mengikuti latihan CBT, namun anda tidak perlu konsultasi ke terapis";
       else if (this.total <= 74)
         return "Anda harus mengikuti latihan CBT dan anda boleh atau tidak konsultasi ke terapiss";
       else if (this.total >= 75)

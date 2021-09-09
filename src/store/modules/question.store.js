@@ -2,6 +2,7 @@ import {
   intialQuestionState,
   initialDistortionState,
   initialAnswerQ5,
+  initialNeededAnswer,
 } from "../states";
 import {
   SET_QUESTION_SECUREID,
@@ -9,12 +10,16 @@ import {
   RESET_QUESTION_STATE,
   RESET_ANSWER_Q5,
   SET_ANSWER_Q5,
+  RESET_NEEDED_ANSWER,
+  SET_STEP_10,
+  SET_STEP_11,
 } from "../constants/mutations.type";
 
 const state = {
   question: intialQuestionState(),
   distortion: initialDistortionState(),
   answerQ5: initialAnswerQ5(),
+  neededAnswer: initialNeededAnswer(),
 };
 
 const getters = {
@@ -35,6 +40,12 @@ const getters = {
   getDistortions(state) {
     return state.distortion;
   },
+  getStep10(state) {
+    return state.neededAnswer.step10;
+  },
+  getStep11(state) {
+    return state.neededAnswer.step11;
+  },
 };
 
 const mutations = {
@@ -43,6 +54,15 @@ const mutations = {
   },
   [RESET_ANSWER_Q5](state) {
     Object.assign(state.answerQ5, initialAnswerQ5());
+  },
+  [RESET_NEEDED_ANSWER](state) {
+    Object.assign(state.neededAnswer, initialNeededAnswer());
+  },
+  [SET_STEP_10](state, payload) {
+    state.neededAnswer.step10 = payload;
+  },
+  [SET_STEP_11](state, payload) {
+    state.neededAnswer.step11 = payload;
   },
   [SET_ANSWER_Q5](state, payload) {
     if (

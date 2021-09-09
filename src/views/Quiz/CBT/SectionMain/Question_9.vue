@@ -3,7 +3,8 @@
     <p class="font-airbnb-medium text-base mt-2 mb-4">Step 17</p>
     <p class="font-airbnb-light text-justify mt-2 mb-4">
       Coba bandingkan bukti yang mendukung pikiran negatifmu dengan bukti yang
-      menentang pikiran negatifmu? Apa kesimpulanmu?
+      menentang pikiran negatifmu? <br />
+      Apa kesimpulanmu?
     </p>
     <a-textarea
       v-model="data.answer"
