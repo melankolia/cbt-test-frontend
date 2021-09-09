@@ -85,7 +85,7 @@ export default {
         "4. Apakah Anda mudah merasa takut?",
         "5. Apakah Anda merasa cemas, tengang, atau khawatir?",
         "6. Apakah tangan Anda gemetar?",
-        "7. Apakah Anda merasa tidak bahagia?",
+        "7. Apakah anda mengalami gangguan pencernaan?",
         "8. Apakah Anda merasa sulit berpikir jernih?",
         "9. Apakah Anda merasa tidak bahagia?",
         "10. Apakah Anda lebih sering menangis?",

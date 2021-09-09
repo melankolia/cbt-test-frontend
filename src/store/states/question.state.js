@@ -8,7 +8,7 @@ export const initialDistortionState = () => ({
     {
       title: "Membaca pikiran",
       desc: `Menyimpulkan bahwa orang lain sedang memikirkan hal-hal negatif tentang dirinya padahal belum menemukan fakta yang sebenarnya.`,
-      example: `Saya berjalan sendirian, orang-orang pasti berpikiran bahwa A adalah seorang jomblo dan tidak punya teman.`,
+      example: `Saya berjalan sendirian, orang-orang pasti berpikiran bahwa saya adalah seorang jomblo dan tidak punya teman.`,
     },
     {
       title: "Generalisasi Berlebihan",
@@ -51,7 +51,7 @@ export const initialDistortionState = () => ({
       example: `Pasti karena aku payah, makanya tidak ada yang mau berteman denganku.`,
     },
     {
-      title: "Memperbesar pikiran negatif, meminimalkan pikiran negatif ",
+      title: "Memperbesar pikiran negatif, meminimalkan pikiran positif ",
       desc: `Menolak pengalaman positif dengan bersikeras bahwa hal tersebut tidak dihitung, dan tetap mempertahankan keyakinan negatif.`,
       example: `Saya berpikir bahwa dia  berbuat baik pasti karena ada maunya.`,
     },
@@ -70,4 +70,9 @@ export const initialDistortionState = () => ({
 
 export const initialAnswerQ5 = () => ({
   answer: [],
+});
+
+export const initialNeededAnswer = () => ({
+  step10: null,
+  step11: null,
 });

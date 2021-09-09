@@ -62,7 +62,10 @@ import {
   Question_10,
   Result,
 } from "./Questions";
-import { RESET_ANSWER_Q5 } from "@/store/constants/mutations.type";
+import {
+  RESET_ANSWER_Q5,
+  RESET_NEEDED_ANSWER,
+} from "@/store/constants/mutations.type";
 
 export default {
   components: {
@@ -178,7 +181,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations([RESET_ANSWER_Q5]),
+    ...mapMutations([RESET_ANSWER_Q5, RESET_NEEDED_ANSWER]),
     handleBack() {
       this.$router.replace({ name: MAIN_PAGE });
     },
@@ -197,6 +200,7 @@ export default {
   },
   mounted() {
     this[RESET_ANSWER_Q5]();
+    this[RESET_NEEDED_ANSWER]();
   },
 };
 </script>

@@ -29,6 +29,8 @@
 
 <script>
 import { Radio } from "ant-design-vue";
+import { mapMutations } from "vuex";
+import { SET_STEP_10 } from "@/store/constants/mutations.type";
 
 export default {
   components: {
@@ -51,6 +53,20 @@ export default {
   mounted() {
     let answer = this.questions.filter((e) => e.no >= 1 && e.no <= 2);
     answer.forEach((e) => this.choices.push(...e.answer));
+  },
+  methods: {
+    ...mapMutations([SET_STEP_10]),
+    settingUpStep10(params) {
+      this[SET_STEP_10](params);
+    },
+  },
+  watch: {
+    "data.answer": {
+      handler(val) {
+        val && this.settingUpStep10(val);
+      },
+      deep: true,
+    },
   },
 };
 </script>

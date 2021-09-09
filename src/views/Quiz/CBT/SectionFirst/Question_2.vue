@@ -6,7 +6,7 @@
     </p>
     <a-textarea
       v-model="answer"
-      placeholder="Dia tidak mau menyapa saya karena dia benci saya"
+      placeholder="Contoh : Dia tidak mau menyapa saya karena dia benci saya"
       :auto-size="{ minRows: 4 }"
       class="mb-4"
     />

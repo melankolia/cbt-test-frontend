@@ -54,7 +54,7 @@ export default {
         },
         {
           secureId: "1",
-          title: "Generalisasi Belebihan",
+          title: "Generalisasi Berlebihan",
         },
         {
           secureId: "2",
@@ -86,7 +86,7 @@ export default {
         },
         {
           secureId: "9",
-          title: "Memperbesar pikiran negatif, meminimalkan pikiran negatif",
+          title: "Memperbesar pikiran negatif, meminimalkan pikiran positif",
         },
         {
           secureId: "10",

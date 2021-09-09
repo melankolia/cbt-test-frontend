@@ -10,11 +10,11 @@
     </p>
     <p class="font-airbnb-light text-justify mt-2 mb-4">
       Apa pengalaman positif yang kamu punya untuk membantu melawan pikiran
-      negatif mu yang tidak benar?
+      negatif mu yang tidak benar? ( minimal 3 jawaban)
     </p>
     <a-textarea
       v-model="data.answer"
-      placeholder="Contoh : Saya  pernah menerima makanan yang diantarkan olehnya."
+      placeholder="Contoh : Saya pernah menerima makanan yang diantar olehnya. Saya tidak pernah diganggu ya ketika saya lewat didepan rumahnya. Sesekali saja saya melakukan perbuatan yg ceroboh"
       :auto-size="{ minRows: 6 }"
     />
   </div>

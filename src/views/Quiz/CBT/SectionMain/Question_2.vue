@@ -8,11 +8,15 @@
         Teknik ini menekankan pada keyakinan bahwa pikiran negatif yang muncul
         secara otomatis itu tidak nyata. Meskipun kadang-kadang pikiran itu
         nyata, namun anda sering menemukan bahwa pikiran itu tidak lah benar.
-        Anda dapat menyelidiki pikiran yang anda miliki tentang situasi tertentu
+        Anda dapat mengidentifikasi pikiran yang anda miliki tentang situasi
+        tertentu dengan mengingat pengalaman ( mencari bukti) yang mendukung dan
+        menentang pikiran anda tersebut sehingga anda menemukan pikiran lain yg
+        lebih membantu daripada pikiran otomatis diawal tadi.
+        <!-- Anda dapat menyelidiki pikiran yang anda miliki tentang situasi tertentu
         dengan mencari bukti yang mendukung dan menentang pikiran Anda dan
         menghasilkan pikiran Anda dan menghasilkan pikiran lain yang mungkin
         lebih membantu daripada yang asli. Itulah yang akan Anda pelajari
-        menggunakan teknik ini
+        menggunakan teknik ini -->
       </p>
     </div>
   </div>
