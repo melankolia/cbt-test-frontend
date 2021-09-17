@@ -7,42 +7,53 @@
           Bukti atau pengalaman apa yang mendukung seringnya muncul pikiran
           negatifmu?
         </p>
-        <p class="my-2 text-sm">{{ questions[2].answer || "-" }}</p>
+        <a-tag class="my-2" color="blue">
+          <p class="text-sm">{{ questions[2].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="p-2">
         <p class="font-airbnb-medium">
           Apa yang akan anda katakan ke teman dekatmu jika dia berpikir hal
           negative yang sama denganmu
         </p>
-        <p class="my-2 text-sm">{{ questions[3].answer || "-" }}</p>
+        <a-tag class="my-2" color="blue">
+          <p class="text-sm">{{ questions[3].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="background-colorized p-2">
         <p class="font-airbnb-medium">
           Apakah ada penjelasan lainnya untuk situasi atau pikiran tersebut?
         </p>
-        <p class="my-2 text-sm">{{ questions[4].answer || "-" }}</p>
+        <a-tag class="my-2" color="blue">
+          <p class="text-sm">{{ questions[4].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="p-2">
         <p class="font-airbnb-medium">
           Apa yang akan dikatakan teman dekatmu ketika anda tidak bisa menemukan
-          bukti untuk melawan atau mengubah pikiran negative yang muncul
-          tersebut
+          bukti untuk melawan atau mengubah pikiran negatif yang muncul tersebut
         </p>
-        <p class="my-2 text-sm">{{ questions[5].answer || "-" }}</p>
+        <a-tag class="my-2" color="blue">
+          <p class="text-sm">{{ questions[5].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="background-colorized p-2">
         <p class="font-airbnb-medium">
           Apa pengalaman positif yang kamu punya untuk membantu melawan pikiran
           negatif mu yang tidak benar?
         </p>
-        <p class="my-2 text-sm">{{ questions[6].answer || "-" }}</p>
+        <a-tag class="my-2" color="blue">
+          <p class="text-sm">{{ questions[6].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="p-2">
         <p class="font-airbnb-medium">
           Apakah ada bukti tambahan dari pengalaman positif yang pernah anda
-          alami untuk melawan dan mengubah pikiran negative tersebut?
+          alami untuk melawan dan mengubah pikiran negatif tersebut?
         </p>
-        <p class="my-2 text-sm">{{ questions[7].answer || "-" }}</p>
+        <a-tag class="my-2" color="blue">
+          <p class="text-sm">{{ questions[7].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="background-colorized p-2">
         <p class="font-airbnb-medium">
@@ -50,7 +61,9 @@
           yang menentang pikiran negatifmu? <br />
           Apa kesimpulanmu?
         </p>
-        <p class="my-2 text-sm">{{ questions[8].answer || "-" }}</p>
+        <a-tag class="my-2" color="blue">
+          <p class="text-sm">{{ questions[8].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="p-2">
         <p class="font-airbnb-medium">
@@ -58,15 +71,21 @@
           dengan lantang pikiran positif untuk menggantikan pikiran negatif
           tersebut.
         </p>
-        <p class="my-2 text-sm">{{ questions[9].answer || "-" }}</p>
+        <a-tag class="my-2" color="blue">
+          <p class="text-sm">{{ questions[9].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="background-colorized p-2">
         <p class="font-airbnb-medium">Bagaimana perasaanmu sekarang?</p>
-        <p class="my-2 text-sm">{{ questions[10].answer || "-" }}</p>
+        <a-tag class="my-2" color="blue">
+          <p class="text-sm">{{ questions[10].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="p-2">
         <p class="font-airbnb-medium">Bagaimana tingkat perasaanmu sekarang?</p>
-        <p class="my-2 text-sm">{{ questions[11].answer || "-" }}</p>
+        <a-tag class="my-2" color="blue">
+          <p class="text-sm">{{ questions[11].answer || "-" }}</p>
+        </a-tag>
       </div>
     </div>
     <a-button
@@ -82,13 +101,14 @@
 
 <script>
 import QuizService from "@/services/resources/quiz.service";
-import { Button } from "ant-design-vue";
+import { Button, Tag } from "ant-design-vue";
 import { FINAL_MAIN_CBT } from "@/router/name.types";
 import { mapGetters } from "vuex";
 
 export default {
   components: {
     "a-button": Button,
+    "a-tag": Tag,
   },
   props: {
     questions: { type: Array, required: true, default: () => [] },

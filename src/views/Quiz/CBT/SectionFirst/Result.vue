@@ -4,7 +4,9 @@
     <div class="text-left border border-gray-300 rounded-xl space-y-2 mb-4">
       <div class="background-colorized rounded-t-xl p-2">
         <p class="font-airbnb-medium">Situasi</p>
-        <p class="mt-0 text-sm">{{ questions[0].answer || "-" }}</p>
+        <a-tag color="blue">
+          <p class="mt-0 text-sm">{{ questions[0].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="p-2">
         <p class="font-airbnb-medium">Pikiran</p>
@@ -28,25 +30,35 @@
       </div>
       <div class="p-2">
         <p class="font-airbnb-medium">Perasaan</p>
-        <p class="mt-0 text-sm">{{ questions[6].answer || "-" }}</p>
+        <a-tag color="blue">
+          <p class="mt-0 text-sm">{{ questions[6].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="background-colorized p-2">
         <p class="font-airbnb-medium">Tingkatan Perasaan</p>
-        <p class="mt-0 text-sm">{{ questions[7].answer || "-" }}</p>
+        <a-tag color="blue">
+          <p class="mt-0 text-sm">{{ questions[7].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="p-2">
         <p class="font-airbnb-medium">Perilaku</p>
-        <p class="mt-0 text-sm">{{ questions[8].answer || "-" }}</p>
+        <a-tag color="blue">
+          <p class="mt-0 text-sm">{{ questions[8].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="background-colorized p-2">
         <p class="font-airbnb-medium">Konsekuensi</p>
-        <p class="mt-0 text-sm">{{ questions[9].answer || "-" }}</p>
+        <a-tag color="blue">
+          <p class="mt-0 text-sm">{{ questions[9].answer || "-" }}</p>
+        </a-tag>
       </div>
       <div class="p-2">
         <p class="font-airbnb-medium">
           Pikiran yang paling sering mengganggu pikiran
         </p>
-        <p class="mt-0 text-sm">{{ questions[10].answer || "-" }}</p>
+        <a-tag color="blue">
+          <p class="mt-0 text-sm">{{ questions[10].answer || "-" }}</p>
+        </a-tag>
       </div>
     </div>
     <a-button

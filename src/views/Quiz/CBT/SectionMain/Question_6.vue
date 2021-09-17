@@ -10,7 +10,7 @@
     </p>
     <p class="font-airbnb-light text-justify mt-2 mb-4">
       Apa yang akan dikatakan teman dekatmu ketika anda tidak bisa menemukan
-      bukti untuk melawan atau mengubah pikiran negative yang muncul tersebut?
+      bukti untuk melawan atau mengubah pikiran negatif yang muncul tersebut?
     </p>
     <a-textarea
       v-model="data.answer"
