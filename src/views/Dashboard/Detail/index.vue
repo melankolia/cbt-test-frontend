@@ -131,7 +131,7 @@
               <a-descriptions-item
                 key="14"
                 :span="3"
-                label="Apa yang akan dikatakan teman dekatmu ketika anda tidak bisa menemukan bukti untuk melawan atau mengubah pikiran negative yang muncul tersebut ?"
+                label="Apa yang akan dikatakan teman dekatmu ketika anda tidak bisa menemukan bukti untuk melawan atau mengubah pikiran negatif yang muncul tersebut ?"
               >
                 {{ detail.CBT_FirstSection && detail.CBT_MainSection.step_14 }}
               </a-descriptions-item>
@@ -145,7 +145,7 @@
               <a-descriptions-item
                 key="16"
                 :span="3"
-                label="Apakah ada bukti tambahan dari pengalaman positif yang pernah anda alami untuk melawan dan mengubah pikiran negative tersebut ?"
+                label="Apakah ada bukti tambahan dari pengalaman positif yang pernah anda alami untuk melawan dan mengubah pikiran negatif tersebut ?"
               >
                 {{ detail.CBT_FirstSection && detail.CBT_MainSection.step_16 }}
               </a-descriptions-item>

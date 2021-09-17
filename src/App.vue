@@ -20,4 +20,13 @@ export default {};
   min-height: 100vh;
   background: #bbe3f2;
 }
+
+textarea {
+  background-color: #fdced7 !important;
+}
+
+textarea::placeholder {
+  text-align: justify !important;
+  color: #000000a6 !important;
+}
 </style>

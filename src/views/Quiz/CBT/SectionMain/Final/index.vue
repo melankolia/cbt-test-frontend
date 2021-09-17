@@ -15,8 +15,8 @@
     <div class="px-8 my-8">
       <p class="font-airbnb-medium text-3xl text-white">Anda Cerdas</p>
       <p class="font-airbnb text-base text-white leading-snug my-8">
-        Kesungguhanmu mengerjakan sesuatu akan memberikan hasil yang sungguh
-        sungguh nyata
+        Kesungguhanmu mengerjakan sesuatu akan membantu dalam menyelesaikan
+        masalahmu
       </p>
     </div>
     <div class="w-full px-8">
