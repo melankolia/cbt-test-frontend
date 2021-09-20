@@ -6,7 +6,7 @@
     </p>
     <a-textarea
       v-model="data.answer"
-      placeholder="Contoh : karena membuat diri saya bahagia dan berguna."
+      placeholder="Contoh : Karena membuat diri saya bahagia dan berguna."
       :auto-size="{ minRows: 6 }"
     />
   </div>

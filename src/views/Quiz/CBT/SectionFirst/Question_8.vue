@@ -7,7 +7,7 @@
     </p>
     <a-textarea
       v-model="data.answer"
-      placeholder="Contoh : saya lebih senang menyendiri dirumah"
+      placeholder="Contoh : Saya lebih senang menyendiri dirumah"
       :auto-size="{ minRows: 4 }"
     />
   </div>
