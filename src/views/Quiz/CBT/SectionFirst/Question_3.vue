@@ -1,7 +1,7 @@
 <template>
   <div class="text-center my-4">
-    <p class="font-airbnb-medium text-base my-2">Step 3</p>
-    <p class="font-airbnb-light mt-2 mb-4">Apa Lagi Yang Kamu pikirkan?</p>
+    <p class="font-airbnb-light text-base my-2">Step 3</p>
+    <p class="font-airbnb-medium mt-2 mb-4">Apa Lagi Yang Kamu pikirkan?</p>
     <a-textarea
       v-model="answer"
       placeholder="Contoh : Dia marah kesaya karena saya pernah menabrak motornya.Saya memang orang paling ceroboh "

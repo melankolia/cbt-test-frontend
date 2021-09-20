@@ -1,7 +1,7 @@
 <template>
   <div class="text-center my-4">
-    <p class="font-airbnb-medium text-base mt-2 mb-4">Step 23</p>
-    <p class="font-airbnb-light text-justify mt-2 mb-4">
+    <p class="font-airbnb-light text-base mt-2 mb-4">Step 23</p>
+    <p class="font-airbnb-medium text-center mt-2 mb-4">
       Apakah ada perilaku lainnya yang bermanfaat yang dapat anda lakukan?
     </p>
     <a-textarea

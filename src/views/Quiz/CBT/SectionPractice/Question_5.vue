@@ -1,7 +1,7 @@
 <template>
   <div class="text-center my-4">
-    <p class="font-airbnb-medium text-base mt-2 mb-4">Step 25</p>
-    <p class="font-airbnb-light text-justify mt-2 mb-4">
+    <p class="font-airbnb-light text-base mt-2 mb-4">Step 25</p>
+    <p class="font-airbnb-medium text-center mt-2 mb-4">
       Apakah yang akan anda katakan kepada teman atau keluargamu jika mereka
       tidak mendukung tindakan (perilaku) baru tersebut ?
     </p>

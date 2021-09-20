@@ -1,8 +1,8 @@
 <template>
   <div class="text-center my-4">
-    <p class="font-airbnb-medium text-base my-2">Step 1</p>
-    <p class="font-airbnb-bold text-base my-2">Bagaimana situasinya?</p>
-    <p class="font-airbnb-light mt-2 mb-4">
+    <p class="font-airbnb-light text-base my-2">Step 1</p>
+    <p class="font-airbnb-medium text-base my-2">Bagaimana situasinya?</p>
+    <p class="font-airbnb-medium mt-2 mb-4">
       “Tuliskan situasi (keadaan) yang menyebabkan anda sering berpikir negatif
       atau mempunyai perasaan negatif?"
     </p>

@@ -71,7 +71,7 @@ import QuizService from "@/services/resources/quiz.service";
 import { Button } from "ant-design-vue";
 import { mapMutations, mapGetters } from "vuex";
 import { SET_FINAL_ANSWER } from "@/store/constants/mutations.type";
-import { FINAL_SCREEN } from "@/router/name.types";
+import { FINAL_SCREEN, MAIN_CBT } from "@/router/name.types";
 import {
   Question_1,
   Question_2,
@@ -153,6 +153,9 @@ export default {
   },
   methods: {
     ...mapMutations([SET_FINAL_ANSWER]),
+    handleBack() {
+      this.$router.replace({ name: MAIN_CBT });
+    },
     handleNext() {
       if (this.submitNext) {
         const payload = {
