@@ -9,6 +9,9 @@
       items-center
     "
   >
+    <div class="w-1/2 h-1/2 bg-white my-4 rounded-full animate-bounce">
+      <a-icon class="text-9xl m-6 text-green-500" type="smile" />
+    </div>
     <div class="px-8 my-8">
       <p class="font-airbnb-medium text-3xl text-white">Anda Hebat</p>
       <p class="font-airbnb text-base text-white leading-snug my-8">
@@ -34,12 +37,13 @@
 </template>
 
 <script>
-import { Button } from "ant-design-vue";
+import { Icon, Button } from "ant-design-vue";
 import { MAIN_PAGE } from "@/router/name.types";
 
 export default {
   components: {
     "a-button": Button,
+    "a-icon": Icon,
   },
   data() {
     return {

@@ -4,7 +4,7 @@
       class="button-back"
       shape="circle"
       icon="left"
-      @click="$router.back()"
+      @click="handleBack"
     />
     <div class="min-h-screen px-6 pt-20 pb-8 flex flex-col">
       <div class="bg-white rounded-xl p-6">
@@ -45,6 +45,7 @@
 
 <script>
 import { Button } from "ant-design-vue";
+import { FIRST_CBT } from "@/router/name.types";
 import {
   Question_1,
   Question_2,
@@ -163,6 +164,9 @@ export default {
     },
   },
   methods: {
+    handleBack() {
+      this.$router.replace({ name: FIRST_CBT });
+    },
     handleNext() {
       this.question = this.questions[this.question.no + 1];
     },

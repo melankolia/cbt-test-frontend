@@ -1,7 +1,7 @@
 <template>
   <div class="text-center my-4">
-    <p class="font-airbnb-medium text-base my-2">Step 2</p>
-    <p class="font-airbnb-light mt-2 mb-4">
+    <p class="font-airbnb-light text-base my-2">Step 2</p>
+    <p class="font-airbnb-medium mt-2 mb-4">
       Apa yang anda pikirkan mengenai kejadian itu?
     </p>
     <a-textarea
