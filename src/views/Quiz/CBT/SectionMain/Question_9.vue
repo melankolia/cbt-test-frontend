@@ -8,7 +8,7 @@
     </p>
     <a-textarea
       v-model="data.answer"
-      placeholder="Contoh : pikiran yang diawal tadi gak benar karena ternyata dia sebenarnya baik. Dia seperti itu mungkin dia ada masalah. Saya kadang bertindak hati hati dalam bekerja. Saya bisa menyelesaikan pekerjaan saya"
+      placeholder="Contoh : Pikiran yang diawal tadi gak benar karena ternyata dia sebenarnya baik. Dia seperti itu mungkin dia ada masalah. Saya kadang bertindak hati hati dalam bekerja. Saya bisa menyelesaikan pekerjaan saya"
       :auto-size="{ minRows: 6 }"
     />
   </div>
