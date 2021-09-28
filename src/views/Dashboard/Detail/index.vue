@@ -10,6 +10,11 @@
       <a-descriptions-item label="Username" :span="3">
         {{ detail.username || "-" }}
       </a-descriptions-item>
+      <a-descriptions-item label="Status" :span="3">
+        <a-tag :color="checkColorStatus(detail)">
+          {{ convertStatus(detail) || "-" | toTitle }}
+        </a-tag>
+      </a-descriptions-item>
       <a-descriptions-item label="Depresi" :span="3">
         <a-collapse v-model="expandAnxiety" expand-icon-position="right">
           <a-collapse-panel key="1" header="Tabel Depresi">
@@ -31,6 +36,11 @@
       <a-descriptions-item label="Total Nilai Depresi" :span="3">
         {{ detail.totalDepresi || "-" }}
       </a-descriptions-item>
+      <a-descriptions-item label="Tingkatan Depresi" :span="3">
+        <a-tag :color="checkColorTingkatanDep(detail)">
+          {{ convertDescTingkatanDep(detail) }}
+        </a-tag>
+      </a-descriptions-item>
       <a-descriptions-item label="Ansietas" :span="3">
         <a-collapse v-model="expandDepresi" expand-icon-position="right">
           <a-collapse-panel key="1" header="Tabel Ansietas">
@@ -51,6 +61,11 @@
       </a-descriptions-item>
       <a-descriptions-item label="Total Nilai Ansietas" :span="3">
         {{ detail.totalAnsietas || "-" }}
+      </a-descriptions-item>
+      <a-descriptions-item label="Tingkatan Ansietas" :span="3">
+        <a-tag :color="checkColorTingkatanAnx(detail)">
+          {{ convertDescTingkatanAnx(detail) }}
+        </a-tag>
       </a-descriptions-item>
       <a-descriptions-item label="CBT" :span="3">
         <a-collapse v-model="expandCBT" expand-icon-position="right">
@@ -326,6 +341,40 @@ export default {
     };
   },
   methods: {
+    checkColorTingkatanDep(e) {
+      if (e.totalDepresi <= 9) return "green";
+      else if (e.totalDepresi <= 14) return "yellow";
+      else if (e.totalDepresi >= 19) return "red";
+      return "green";
+    },
+    checkColorTingkatanAnx(e) {
+      if (e.totalAnsietas <= 59) return "green";
+      else if (e.totalAnsietas <= 74) return "yellow";
+      else if (e.totalAnsietas >= 75) return "red";
+      return "green";
+    },
+    convertDescTingkatanAnx(e) {
+      if (e.totalAnsietas <= 59) return "Ringan";
+      else if (e.totalAnsietas <= 74) return "Sedang";
+      else if (e.totalAnsietas >= 75) return "Berat";
+      return "Ringan";
+    },
+    convertDescTingkatanDep(e) {
+      if (e.totalDepresi <= 9) return "Ringan";
+      else if (e.totalDepresi <= 14) return "Sedang";
+      else if (e.totalDepresi >= 19) return "Berat";
+      return "Ringan";
+    },
+    checkColorStatus(e) {
+      if (e.status == "sehat") return "green";
+      else if (e.status == "gangguan psikotik") return "red";
+      else if (e.status == "psikososial") return "blue";
+      return "green";
+    },
+    convertStatus(e) {
+      if (e.status == "psikososial") return "Masalah Psikososial";
+      return e.status;
+    },
     getDetail() {
       this.loading = true;
       MainService.getDetail(this.id)

@@ -15,3 +15,5 @@ export const MAIN_CBT = `mainCBT`;
 export const FINAL_MAIN_CBT = `finalMainCBT`;
 export const PRACTICES_CBT = `practicesCBT`;
 export const FINAL_SCREEN = `finalScreen`;
+export const SURVEY_QUESTIONS = `surveyQuestions`;
+export const SURVEY_IDENTITIES = `surveyIdentities`;

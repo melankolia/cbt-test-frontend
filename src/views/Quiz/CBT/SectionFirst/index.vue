@@ -49,6 +49,7 @@ import { mapMutations } from "vuex";
 import { Button } from "ant-design-vue";
 import { MAIN_PAGE } from "@/router/name.types";
 import {
+  Prolog,
   Question_1,
   Question_2,
   Question_3,
@@ -70,6 +71,7 @@ import {
 export default {
   components: {
     "a-button": Button,
+    Prolog,
     Question_1,
     Question_2,
     Question_3,
@@ -88,77 +90,83 @@ export default {
       loading: false,
       question: {
         no: 0,
-        title: "Situasi",
-        component: Question_1,
+        title: "Prolog",
+        component: Prolog,
         answer: "",
       },
       questions: [
         {
           no: 0,
+          title: "Prolog",
+          component: Prolog,
+          answer: "",
+        },
+        {
+          no: 1,
           title: "Situasi",
           component: Question_1,
           answer: "",
         },
         {
-          no: 1,
+          no: 2,
           title: "Pikiran",
           component: Question_2,
           answer: [],
         },
         {
-          no: 2,
+          no: 3,
           title: "Pikiran",
           component: Question_3,
           answer: [],
         },
         {
-          no: 3,
+          no: 4,
           component: Question_4,
           answer: "",
         },
         {
-          no: 4,
+          no: 5,
           title: "Jenis Distorsi Pikiran",
           component: Question_5,
           answer: [],
         },
         {
-          no: 5,
+          no: 6,
           component: Question_5_Detail,
           answer: [],
         },
         {
-          no: 6,
+          no: 7,
           title: "Perasaan",
           component: Question_6,
           answer: "",
         },
         {
-          no: 7,
+          no: 8,
           title: "Tingkatan Perasaan",
           component: Question_7,
           answer: 5.0,
         },
         {
-          no: 8,
+          no: 9,
           title: "Perilaku",
           component: Question_8,
           answer: "",
         },
         {
-          no: 9,
+          no: 10,
           title: "Konsekuensi",
           component: Question_9,
           answer: "",
         },
         {
-          no: 10,
+          no: 11,
           title: "Pikiran yang paling sering mengganggu perasaan",
           component: Question_10,
           answer: "",
         },
         {
-          no: 11,
+          no: 12,
           component: Result,
         },
       ],
@@ -173,10 +181,10 @@ export default {
     },
     hideNavigation() {
       return (
-        this.question.no == 1 ||
         this.question.no == 2 ||
-        this.question.no == 5 ||
-        this.question.no == 11
+        this.question.no == 3 ||
+        this.question.no == 6 ||
+        this.question.no == 12
       );
     },
   },
@@ -189,13 +197,13 @@ export default {
       this.question = this.questions[this.question.no - 1];
     },
     handleNext(e) {
-      if (e !== "Detail-Q5" && this.question.no == 4) {
+      if (e !== "Detail-Q5" && this.question.no == 5) {
         return (this.question = this.questions[this.question.no + 2]);
       }
       this.question = this.questions[this.question.no + 1];
     },
     handlePop() {
-      this.question = this.questions[1];
+      this.question = this.questions[2];
     },
   },
   mounted() {

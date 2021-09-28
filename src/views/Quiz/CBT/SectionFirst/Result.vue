@@ -110,29 +110,29 @@ export default {
     },
     payloadResult() {
       let result = [];
-      result = [...result, this.questions[1].answer.join(", ")];
       result = [...result, this.questions[2].answer.join(", ")];
+      result = [...result, this.questions[3].answer.join(", ")];
       return result.join(", ");
     },
   },
   methods: {
     reducingData() {
       let result = [];
-      result = [...result, ...this.questions[1].answer];
       result = [...result, ...this.questions[2].answer];
+      result = [...result, ...this.questions[3].answer];
       this.result = result;
     },
     handleSubmit() {
       const payload = {
         id_user: this.getUser.id,
-        situasi: this?.questions[0].answer,
+        situasi: this?.questions[1].answer,
         pikiran: this.payloadResult,
         distorsi_pikiran: this.payloadDistortions,
-        perasaan: this?.questions[6].answer,
-        tingkat_perasaan: this?.questions[7].answer,
-        perilaku: this?.questions[8].answer,
-        konsekuensi: this?.questions[9].answer,
-        paling_mengganggu: this?.questions[10].answer,
+        perasaan: this?.questions[7].answer,
+        tingkatan_perasaan: this?.questions[8].answer,
+        perilaku: this?.questions[9].answer,
+        konsekuensi: this?.questions[10].answer,
+        paling_mengganggu: this?.questions[11].answer,
       };
       this.submit(payload);
     },

@@ -16,6 +16,8 @@ const MainCBT = () => import("../views/Quiz/CBT/SectionMain");
 const FinalMainCBT = () => import("../views/Quiz/CBT/SectionMain/Final");
 const PracticesCBT = () => import("../views/Quiz/CBT/SectionPractice");
 const FinalScreen = () => import("../views/Final/index.vue");
+const SurveyQuestions = () => import("../views/Survey/Questions");
+const SurveyIdentity = () => import("../views/Survey/Identity");
 
 import {
   // HOME,?
@@ -35,6 +37,8 @@ import {
   FINAL_MAIN_CBT,
   PRACTICES_CBT,
   FINAL_SCREEN,
+  SURVEY_QUESTIONS,
+  SURVEY_IDENTITIES,
 } from "./name.types";
 
 export const configRoutes = [
@@ -141,6 +145,32 @@ export const configRoutes = [
         path: "final/main-cbt",
         name: FINAL_MAIN_CBT,
         component: FinalMainCBT,
+        meta: {
+          requiresAuth: true,
+        },
+      },
+    ],
+  },
+  {
+    path: "/survey",
+    component: {
+      render(c) {
+        return c("router-view");
+      },
+    },
+    children: [
+      {
+        path: "/identities",
+        name: SURVEY_IDENTITIES,
+        component: SurveyIdentity,
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: "/questions",
+        name: SURVEY_QUESTIONS,
+        component: SurveyQuestions,
         meta: {
           requiresAuth: true,
         },

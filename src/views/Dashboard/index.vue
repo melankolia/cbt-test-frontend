@@ -12,8 +12,23 @@
       :pagination="false"
       rowKey="username"
     >
+      <span slot="status" slot-scope="currentDataPage">
+        <a-tag :color="checkColorStatus(currentDataPage)">
+          {{ convertStatus(currentDataPage) || "-" | toTitle }}
+        </a-tag>
+      </span>
       <span slot="action" slot-scope="currentDataPage">
         <a @click="() => goToDetail(currentDataPage)">Detail</a>
+      </span>
+      <span slot="tingkatanDepresi" slot-scope="currentDataPage">
+        <a-tag :color="checkColorDep(currentDataPage)">
+          {{ convertDescDep(currentDataPage) }}
+        </a-tag>
+      </span>
+      <span slot="tingkatanAnsietas" slot-scope="currentDataPage">
+        <a-tag :color="checkColorAnx(currentDataPage)">
+          {{ convertDescAnx(currentDataPage) }}
+        </a-tag>
       </span>
       <template slot="footer">
         <div class="flex flex-row justify-end">
@@ -26,7 +41,7 @@
 
 <script>
 import MainService from "@/services/resources/main.service";
-import { Table, Input, Pagination, Divider } from "ant-design-vue";
+import { Table, Input, Pagination, Divider, Tag } from "ant-design-vue";
 import { mapGetters } from "vuex";
 import { DASHBOARD_DETAIL } from "@/router/name.types";
 
@@ -42,14 +57,32 @@ const columns = [
     key: "username",
   },
   {
+    title: "Ansietas",
+    scopedSlots: { customRender: "tingkatanAnsietas" },
+    key: "tingkatanAnsietas",
+  },
+  {
     title: "Total Skor Ansietas",
     dataIndex: "totalAnsietas",
     key: "totalAnsietas",
+    align: "center",
+  },
+  {
+    title: "Depresi",
+    key: "tingkatanDepresi",
+    scopedSlots: { customRender: "tingkatanDepresi" },
   },
   {
     title: "Total Skor Depresi",
     dataIndex: "totalDepresi",
     key: "totalDepresi",
+    align: "center",
+  },
+  {
+    title: "Status",
+    scopedSlots: { customRender: "status" },
+    key: "status",
+    align: "center",
   },
   {
     title: "Action",
@@ -63,6 +96,7 @@ export default {
     "a-input-search": Input.Search,
     "a-table": Table,
     "a-pagination": Pagination,
+    "a-tag": Tag,
     "a-divider": Divider,
   },
   data() {
@@ -107,6 +141,40 @@ export default {
           this.$message.error("Gagal memuat data responden", 2.5);
         })
         .finally(() => (this.loading = false));
+    },
+    checkColorStatus(e) {
+      if (e.status == "sehat") return "green";
+      else if (e.status == "gangguan psikotik") return "red";
+      else if (e.status == "psikososial") return "blue";
+      return "green";
+    },
+    convertStatus(e) {
+      if (e.status == "psikososial") return "Masalah Psikososial";
+      return e.status;
+    },
+    checkColorDep(e) {
+      if (e.totalDepresi <= 9) return "green";
+      else if (e.totalDepresi <= 14) return "yellow";
+      else if (e.totalDepresi >= 19) return "red";
+      return "green";
+    },
+    checkColorAnx(e) {
+      if (e.totalAnsietas <= 59) return "green";
+      else if (e.totalAnsietas <= 74) return "yellow";
+      else if (e.totalAnsietas >= 75) return "red";
+      return "green";
+    },
+    convertDescAnx(e) {
+      if (e.totalAnsietas <= 59) return "Ringan";
+      else if (e.totalAnsietas <= 74) return "Sedang";
+      else if (e.totalAnsietas >= 75) return "Berat";
+      return "Ringan";
+    },
+    convertDescDep(e) {
+      if (e.totalDepresi <= 9) return "Ringan";
+      else if (e.totalDepresi <= 14) return "Sedang";
+      else if (e.totalDepresi >= 19) return "Berat";
+      return "Ringan";
     },
   },
   computed: {

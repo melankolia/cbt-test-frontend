@@ -113,6 +113,26 @@
             />
             <p class="font-airbnb-medium text-lg text-white m-0">Sesi CBT</p>
           </div>
+          <div
+            class="
+              bg-primary
+              active:bg-white
+              rounded-lg
+              p-4
+              flex flex-row
+              items-center
+            "
+            @click="goToSurvey"
+          >
+            <img
+              class="mr-8"
+              width="32px"
+              height="32px"
+              src="@/assets/images/survey.png"
+              alt="clipboard"
+            />
+            <p class="font-airbnb-medium text-lg text-white m-0">Survey</p>
+          </div>
         </template>
         <div
           v-if="isAdmin"
@@ -148,6 +168,7 @@ import {
   FIRST_CBT,
   DASHBOARD,
   SCREENING,
+  SURVEY_IDENTITIES,
 } from "@/router/name.types";
 import { mapGetters } from "vuex";
 
@@ -186,6 +207,9 @@ export default {
     },
     goToCBT() {
       this.$router.push({ name: FIRST_CBT });
+    },
+    goToSurvey() {
+      this.$router.push({ name: SURVEY_IDENTITIES });
     },
   },
 };

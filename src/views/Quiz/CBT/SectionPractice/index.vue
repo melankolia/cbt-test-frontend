@@ -73,6 +73,7 @@ import { mapMutations, mapGetters } from "vuex";
 import { SET_FINAL_ANSWER } from "@/store/constants/mutations.type";
 import { FINAL_SCREEN, MAIN_CBT } from "@/router/name.types";
 import {
+  Prolog,
   Question_1,
   Question_2,
   Question_3,
@@ -84,6 +85,7 @@ import {
 export default {
   components: {
     "a-button": Button,
+    Prolog,
     Question_1,
     Question_2,
     Question_3,
@@ -100,36 +102,40 @@ export default {
       loadingNo: false,
       question: {
         no: 0,
-        component: Question_1,
+        component: Prolog,
       },
       questions: [
         {
           no: 0,
+          component: Prolog,
+        },
+        {
+          no: 1,
           component: Question_1,
           answer: "",
         },
         {
-          no: 1,
+          no: 2,
           component: Question_2,
           answer: "",
         },
         {
-          no: 2,
+          no: 3,
           component: Question_3,
           answer: "",
         },
         {
-          no: 3,
+          no: 4,
           component: Question_4,
           answer: "",
         },
         {
-          no: 4,
+          no: 5,
           component: Question_5,
           answer: "",
         },
         {
-          no: 5,
+          no: 6,
           component: Question_6,
           answer: "",
         },
@@ -160,12 +166,12 @@ export default {
       if (this.submitNext) {
         const payload = {
           id_user: this.getUser.id,
-          step_21: this?.questions[0].answer,
-          step_22: this?.questions[1].answer,
-          step_23: this?.questions[2].answer,
-          step_24: this?.questions[3].answer,
-          step_25: this?.questions[4].answer,
-          step_26: this?.questions[5].answer,
+          step_21: this?.questions[1].answer,
+          step_22: this?.questions[2].answer,
+          step_23: this?.questions[3].answer,
+          step_24: this?.questions[4].answer,
+          step_25: this?.questions[5].answer,
+          step_26: this?.questions[6].answer,
         };
         this.submit(payload);
       } else {
