@@ -38,7 +38,7 @@
 
 <script>
 import { Icon, Button } from "ant-design-vue";
-import { MAIN_PAGE } from "@/router/name.types";
+import { SURVEY_IDENTITIES } from "@/router/name.types";
 
 export default {
   components: {
@@ -55,7 +55,7 @@ export default {
       this.loading = true;
       setTimeout(() => {
         this.loading = false;
-        this.$router.push({ name: MAIN_PAGE });
+        this.$router.push({ name: SURVEY_IDENTITIES });
       }, 1500);
     },
   },

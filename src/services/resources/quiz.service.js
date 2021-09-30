@@ -1,5 +1,12 @@
 import MainInstance from "../main.instance";
-import { ANSIETAS, DEPRESI, CBT, USERS } from "../constants";
+import {
+  ANSIETAS,
+  DEPRESI,
+  CBT,
+  USERS,
+  SURVEYS,
+  IDENTITIES,
+} from "../constants";
 
 const QuizService = {
   createDataAnsietas(data) {
@@ -16,6 +23,12 @@ const QuizService = {
   },
   createDataCBTPracticeSection(data) {
     return MainInstance.post(CBT.PRACTICE_SECTION, data);
+  },
+  createSurvey(data) {
+    return MainInstance.post(SURVEYS, data);
+  },
+  createIdentities(data) {
+    return MainInstance.post(IDENTITIES, data);
   },
   updateStatus(data) {
     return MainInstance.post(USERS.UPDATE_STATUS, data);

@@ -10,10 +10,8 @@
       <a-form-model ref="ruleForm" :model="form" :rules="rules">
         <div class="bg-white rounded-xl p-6">
           <p class="font-airbnb-medium text-base mb-0 text-center">
-            Test Tingkat Ansietas
-          </p>
-          <p class="font-airbnb-medium text-base mb-0 text-center">
-            (Kecemasanmu)
+            Survey Kepuasan System Usability Scale Penggunaan Aplikasi CBT
+            Berbasis Web
           </p>
           <div
             class="flex flex-row items-center px-3 mt-8 rounded-xl"
@@ -21,10 +19,12 @@
           >
             <a-icon type="info-circle" />
             <p class="ml-3 m-4">
-              <span class="font-bold">Keterangan :</span> <br />
-              Kadang kadang (1-2x seminggu) <br />
-              Sering (3-4x seminggu) <br />
-              Selalu (setiap hari)
+              Pilihlah salah satu jawaban yang sesuai dengan penilaian anda
+              setelah anda menggunakan
+              <span class="font-bold">
+                <i>Prototype Aplikasi Cognitive Behaviour Therapy (CBT)</i>
+              </span>
+              Berbasis Web
             </p>
           </div>
           <div class="my-8">
@@ -37,7 +37,9 @@
             <div class="my-4">
               <a-form-model-item prop="q2">
                 <p class="font-airbnb mb-1">B. Usia</p>
-                <a-input v-model="form.q2" placeholder="Tahun" />
+                <a-input v-model="form.q2" placeholder="Tahun" type="number">
+                  <p class="font-airbnb" slot="suffix">Tahun</p>
+                </a-input>
               </a-form-model-item>
             </div>
             <div class="my-4">
@@ -202,6 +204,8 @@
 <script>
 import { Button, FormModel, Input, Select, Icon } from "ant-design-vue";
 import { MAIN_PAGE, FIRST_CBT, SURVEY_QUESTIONS } from "@/router/name.types";
+import QuizService from "@/services/resources/quiz.service";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -385,7 +389,6 @@ export default {
     },
     handleSubmit() {
       this.$refs.ruleForm.validate((valid) => {
-        console.log(valid);
         if (valid) {
           this.submitData();
         } else {
@@ -397,12 +400,34 @@ export default {
     },
     submitData() {
       this.loading = true;
-      setTimeout(() => {
-        this.$router.push({
-          name: SURVEY_QUESTIONS,
-        });
-        this.loading = false;
-      }, 2000);
+      QuizService.createIdentities({
+        id_user: this.getUser.id,
+        name: this.form.q1,
+        age: this.form.q2,
+        gender: this.form.q3,
+        is_pregnant: this.form.q4 === "hamil" ? true : false,
+        education: this.form.q5,
+        marital_status: this.form.q6,
+        job: this.form.q7,
+        hospital_sheet: this.form.q8,
+        is_covid19: this.form.q9,
+        frequencies: this.form.q10,
+        additional_field: this.form.q11,
+      })
+        .then(({ data: { message, result } }) => {
+          if (result) {
+            this.$router.push({
+              name: SURVEY_QUESTIONS,
+            });
+          } else {
+            this.$message.error(message || "Data anda gagal diinput", 2.5);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          this.$message.error("Data anda gagal diinput", 2.5);
+        })
+        .finally(() => (this.loading = false));
     },
   },
   watch: {
@@ -412,6 +437,9 @@ export default {
       },
       deep: true,
     },
+  },
+  computed: {
+    ...mapGetters(["getUser"]),
   },
 };
 </script>
