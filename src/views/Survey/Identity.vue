@@ -330,7 +330,7 @@ export default {
           trigger: "change",
         },
         q4: {
-          required: true,
+          required: false,
           message: "Please input this field",
           trigger: "change",
         },
