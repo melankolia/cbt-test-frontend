@@ -274,6 +274,7 @@
                 {{ detail.Identity && detail.Identity.gender }}
               </a-descriptions-item>
               <a-descriptions-item
+                v-if="detail.Identity.gender == 'Perempuan'"
                 key="4"
                 :span="3"
                 label="Hamil / Tidak Hamil (Jika Perempuan)"
