@@ -349,7 +349,12 @@
                 label="Aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini sederhana dan mudah digunakan."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q1) }}
+                  {{
+                    (detail.Survey &&
+                      detail.Survey &&
+                      convertSurvey(detail.Survey.q1)) ||
+                    "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -358,7 +363,9 @@
                 label="Saya tidak dapat menyelesaikan seluruh tahapan dalam  aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q2) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q2)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -367,7 +374,9 @@
                 label="Saya dapat memperoleh pikiran positif dengan  menggunakan aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q3) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q3)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -376,7 +385,9 @@
                 label="Saya merasa aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini tidak dapat membantu menyelesaikan permasalahan saya."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q4) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q4)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -385,7 +396,9 @@
                 label="Saya dapat merasa lebih tenang dan nyaman  menggunakan aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q5) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q5)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -394,7 +407,9 @@
                 label="Saya  merasa kesulitan  memahami dan menggunakan  aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q6) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q6)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -403,7 +418,9 @@
                 label="Kapanpun dan dimanapun saya bisa menggunakan aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q7) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q7)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -412,7 +429,9 @@
                 label="Penjelasan yang disampaikan diaplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini kurang jelas."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q8) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q8)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -421,7 +440,9 @@
                 label="Petunjuk dan informasi dari setiap sesi yang ditampilkan dilayar aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini mudah dipahami."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q9) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q9)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -430,7 +451,9 @@
                 label="Saya tidak dapat mengetahui keadaan emosi selama 2 mimggu  yang  disediakan diaplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q10) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q10)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -439,7 +462,9 @@
                 label="Tampilan dari  aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini bagus dan menarik."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q11) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q11)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -448,7 +473,9 @@
                 label="Proses pelaksanaan yang disediakan didalam aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini tidak efektif."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q12) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q12)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -457,7 +484,9 @@
                 label="Saya menyukai aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini dan  merekomendasikan ke teman."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q13) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q13)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -466,7 +495,9 @@
                 label="Aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini merupakan aplikasi yang  kurang bermanfaat."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q14) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q14)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
               <a-descriptions-item
@@ -475,7 +506,9 @@
                 label="Secara keseluruhan, saya puas dengan kemudahan pemakaian aplikasi Cognitive Behaviour Therapy (CBT) Berbasis Web ini."
               >
                 <a-tag color="blue">
-                  {{ convertSurvey(detail.Survey.q15) }}
+                  {{
+                    (detail.Survey && convertSurvey(detail.Survey.q15)) || "-"
+                  }}
                 </a-tag>
               </a-descriptions-item>
             </a-descriptions>
@@ -639,14 +672,14 @@ export default {
           if (message == "OK") {
             const CopiedSurvey = { ...result.Survey };
             this.detail = { ...result };
-            Object.entries(CopiedSurvey).map((e, i) => {
-              if (i % 2 == 0) {
-                CopiedSurvey[e[0]] = 1 - e[1];
-              } else {
-                CopiedSurvey[e[0]] = 5 - e[1];
-              }
-            });
-            if (CopiedSurvey) {
+            if (result.Survey) {
+              Object.entries(CopiedSurvey).map((e, i) => {
+                if (i % 2 == 0) {
+                  CopiedSurvey[e[0]] = 1 - e[1];
+                } else {
+                  CopiedSurvey[e[0]] = 5 - e[1];
+                }
+              });
               result.totalSurvey =
                 Object.values(CopiedSurvey).reduce((c, p) => c + p) * 2.5;
               this.detail = {
@@ -709,12 +742,12 @@ export default {
   computed: {
     isMahasiswaOrNakes() {
       return (
-        this.detail?.Identity.job == "mahasiswa" ||
-        this.detail?.Identity.job == "perawat"
+        this.detail?.Identity?.job == "mahasiswa" ||
+        this.detail?.Identity?.job == "perawat"
       );
     },
     isMahasiswa() {
-      return this.detail?.Identity.job == "mahasiswa";
+      return this.detail?.Identity?.job == "mahasiswa";
     },
   },
 };
