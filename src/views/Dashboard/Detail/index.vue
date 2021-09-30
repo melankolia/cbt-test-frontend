@@ -274,7 +274,7 @@
                 {{ detail.Identity && detail.Identity.gender }}
               </a-descriptions-item>
               <a-descriptions-item
-                v-if="detail.Identity.gender == 'Perempuan'"
+                v-if="detail.Identity && detail.Identity.gender == 'Perempuan'"
                 key="4"
                 :span="3"
                 label="Hamil / Tidak Hamil (Jika Perempuan)"
@@ -646,12 +646,19 @@ export default {
                 CopiedSurvey[e[0]] = 5 - e[1];
               }
             });
-            result.totalSurvey =
-              Object.values(CopiedSurvey).reduce((c, p) => c + p) * 2.5;
-            this.detail = {
-              ...this.detail,
-              totalSurvey: result.totalSurvey,
-            };
+            if (CopiedSurvey) {
+              result.totalSurvey =
+                Object.values(CopiedSurvey).reduce((c, p) => c + p) * 2.5;
+              this.detail = {
+                ...this.detail,
+                totalSurvey: result.totalSurvey,
+              };
+            } else {
+              this.detail = {
+                ...this.detail,
+                totalSurvey: 0,
+              };
+            }
           } else {
             this.$message.error(result || "Gagal memuat data responden", 2.5);
           }
