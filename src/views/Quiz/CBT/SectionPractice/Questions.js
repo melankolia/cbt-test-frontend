@@ -4,8 +4,10 @@ import Question_3 from "./Question_3.vue";
 import Question_4 from "./Question_4.vue";
 import Question_5 from "./Question_5.vue";
 import Question_6 from "./Question_6.vue";
+import Prolog from "./Prolog.vue";
 
 export {
+  Prolog,
   Question_1,
   Question_2,
   Question_3,

@@ -9,9 +9,13 @@ export const USERS = {
 };
 export const ANSIETAS = `ansietas`;
 export const DEPRESI = `depresi`;
+
 const cbt = `cbt`;
 export const CBT = {
   FIRST_SECTION: `${cbt}/first-section`,
   MAIN_SECTION: `${cbt}/main-section`,
   PRACTICE_SECTION: `${cbt}/practice-section`,
 };
+
+export const SURVEYS = `surveys`;
+export const IDENTITIES = `identities`;

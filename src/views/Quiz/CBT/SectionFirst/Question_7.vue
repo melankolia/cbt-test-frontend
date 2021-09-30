@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     feels() {
-      return this.questions[6].answer || "malu";
+      return this.questions[7].answer || "malu";
     },
   },
 };

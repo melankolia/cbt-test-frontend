@@ -10,8 +10,10 @@ import Question_8 from "./Question_8.vue";
 import Question_9 from "./Question_9.vue";
 import Question_10 from "./Question_10.vue";
 import Result from "./Result.vue";
+import Prolog from "./Prolog.vue";
 
 export {
+  Prolog,
   Question_1,
   Question_2,
   Question_3,
