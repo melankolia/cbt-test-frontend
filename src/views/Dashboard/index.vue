@@ -32,7 +32,7 @@
       </span>
       <template slot="footer">
         <div class="flex flex-row justify-end">
-          <a-pagination v-model="current" :total="20" show-less-items />
+          <a-pagination v-model="current" :total="totalItem" show-less-items />
         </div>
       </template>
     </a-table>
@@ -46,6 +46,11 @@ import { mapGetters } from "vuex";
 import { DASHBOARD_DETAIL } from "@/router/name.types";
 
 const columns = [
+  {
+    title: "No",
+    dataIndex: "no",
+    key: "no",
+  },
   {
     title: "Name",
     dataIndex: "name",
@@ -130,8 +135,12 @@ export default {
       })
         .then(({ data: { result, message } }) => {
           if (message === "OK") {
-            this.data = [...result];
-            this.totalItem = result.length;
+            this.data = [...result.rows];
+            result.rows.map((data, index) => {
+              data.no = 10 * (this.current - 1) + (index + 1);
+              return data;
+            });
+            this.totalItem = result.count;
           } else {
             this.$message.error(result || "Gagal memuat data responden", 2.5);
           }
@@ -159,15 +168,15 @@ export default {
       return "green";
     },
     checkColorAnx(e) {
-      if (e.totalAnsietas <= 59) return "green";
-      else if (e.totalAnsietas <= 74) return "yellow";
-      else if (e.totalAnsietas >= 75) return "red";
+      if (e.totalAnsietas <= 44) return "green";
+      else if (e.totalAnsietas <= 59) return "yellow";
+      else if (e.totalAnsietas >= 74) return "red";
       return "green";
     },
     convertDescAnx(e) {
-      if (e.totalAnsietas <= 59) return "Ringan";
-      else if (e.totalAnsietas <= 74) return "Sedang";
-      else if (e.totalAnsietas >= 75) return "Berat";
+      if (e.totalAnsietas <= 44) return "Ringan";
+      else if (e.totalAnsietas <= 59) return "Sedang";
+      else if (e.totalAnsietas >= 74) return "Berat";
       return "Ringan";
     },
     convertDescDep(e) {
