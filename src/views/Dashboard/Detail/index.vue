@@ -674,8 +674,8 @@ export default {
             this.detail = { ...result };
             if (result.Survey) {
               Object.entries(CopiedSurvey).map((e, i) => {
-                if (i % 2 == 0) {
-                  CopiedSurvey[e[0]] = 1 - e[1];
+                if ((i + 1) % 2 == 0) {
+                  CopiedSurvey[e[0]] = e[1] - 1;
                 } else {
                   CopiedSurvey[e[0]] = 5 - e[1];
                 }
