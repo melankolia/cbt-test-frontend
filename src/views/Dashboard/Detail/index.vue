@@ -675,9 +675,25 @@ export default {
             if (result.Survey) {
               Object.entries(CopiedSurvey).map((e, i) => {
                 if ((i + 1) % 2 == 0) {
-                  CopiedSurvey[e[0]] = e[1] - 1;
+                  switch (e[1]) {
+                    case 1:
+                      CopiedSurvey[e[0]] = 0;
+                      break;
+                    case 2:
+                      CopiedSurvey[e[0]] = 1;
+                      break;
+                    case 3:
+                      CopiedSurvey[e[0]] = 2;
+                      break;
+                    case 4:
+                      CopiedSurvey[e[0]] = 3;
+                      break;
+                    case 5:
+                      CopiedSurvey[e[0]] = 4;
+                      break;
+                  }
                 } else {
-                  CopiedSurvey[e[0]] = 5 - e[1];
+                  CopiedSurvey[e[0]] = e[1] - 1;
                 }
               });
               result.totalSurvey =
