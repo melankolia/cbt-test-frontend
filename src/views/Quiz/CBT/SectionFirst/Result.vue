@@ -31,25 +31,25 @@
       <div class="p-2">
         <p class="font-airbnb-medium">Perasaan</p>
         <a-tag color="blue">
-          <p class="mt-0 text-sm">{{ questions[6].answer || "-" }}</p>
+          <p class="mt-0 text-sm">{{ questions[7].answer || "-" }}</p>
         </a-tag>
       </div>
       <div class="background-colorized p-2">
         <p class="font-airbnb-medium">Tingkatan Perasaan</p>
         <a-tag color="blue">
-          <p class="mt-0 text-sm">{{ questions[7].answer || "-" }}</p>
+          <p class="mt-0 text-sm">{{ questions[8].answer || "-" }}</p>
         </a-tag>
       </div>
       <div class="p-2">
         <p class="font-airbnb-medium">Perilaku</p>
         <a-tag color="blue">
-          <p class="mt-0 text-sm">{{ questions[8].answer || "-" }}</p>
+          <p class="mt-0 text-sm">{{ questions[9].answer || "-" }}</p>
         </a-tag>
       </div>
       <div class="background-colorized p-2">
         <p class="font-airbnb-medium">Konsekuensi</p>
         <a-tag color="blue">
-          <p class="mt-0 text-sm">{{ questions[9].answer || "-" }}</p>
+          <p class="mt-0 text-sm">{{ questions[10].answer || "-" }}</p>
         </a-tag>
       </div>
       <div class="p-2">
@@ -57,7 +57,7 @@
           Pikiran yang paling sering mengganggu pikiran
         </p>
         <a-tag color="blue">
-          <p class="mt-0 text-sm">{{ questions[10].answer || "-" }}</p>
+          <p class="mt-0 text-sm">{{ questions[11].answer || "-" }}</p>
         </a-tag>
       </div>
     </div>

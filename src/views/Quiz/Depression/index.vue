@@ -56,7 +56,7 @@
       </a-form-model>
     </div>
     <ModalResult
-      title="Hasil Tingkat Tingkatan Ansietas"
+      title="Hasil Tingkat Tingkatan Depresi"
       :visible="visible"
       :handleOk="handleOk"
       :handleCancel="handleCancel"
